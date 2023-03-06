@@ -1,0 +1,17 @@
+﻿using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace Testing2
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void InstanceOK()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            Assert.IsNotNull(AnSupplier);
+        }
+    }
+}
