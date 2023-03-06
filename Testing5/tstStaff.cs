@@ -10,10 +10,37 @@ namespace Testing5
         [TestMethod]
         public void InstanceOK()
         {
-            //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
-            //test to see that it exists
             Assert.IsNotNull(AStaff);
         }
+
+        [TestMethod]
+        public void StaffAdminPropertyOK()
+        {
+            clsStaff AStaff = new clsStaff();
+            Boolean TestData = true;
+            AStaff.Active = TestData;
+            Assert.AreEqual(AStaff.Active, TestData);
+        }
+
+        [TestMethod]
+        public void StaffDateOfBirthPropertyOK()
+        {
+            clsStaff AStaff = new clsStaff();
+            DateTime TestData = DateTime.Now.Date;
+            AStaff.DateAdded = TestData;
+            Assert.AreEqual(AStaff.DateAdded, TestData);
+
+        }
+
+        [TestMethod]
+        public void StaffFirstNamePropertyOK()
+        {
+            clsStaff AStaff = new clsStaff();
+            string TestData = "First Name";
+            AStaff.StaffFirstName = TestData;
+            Assert.AreEqual(AStaff.StaffFirstName, TestData);
+        }
+
     }
 }
