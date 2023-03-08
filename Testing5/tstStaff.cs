@@ -42,5 +42,42 @@ namespace Testing5
             Assert.AreEqual(AStaff.StaffFirstName, TestData);
         }
 
+        [TestMethod]
+        public void StaffLastNamePropertyOK()
+        {
+            clsStaff AStaff = new clsStaff();
+            string TestData = "Last Name";
+            AStaff.StaffLastName = TestData;
+            Assert.AreEqual(AStaff.StaffLastName, TestData);
+        }
+
+        [TestMethod]
+        public void StaffRolePropertyOK()
+        {
+            clsStaff AStaff = new clsStaff();
+            string TestData = "Role";
+            AStaff.StaffRole = TestData;
+            Assert.AreEqual(AStaff.StaffRole, TestData);
+        }
+
+        [TestMethod]
+        public void StaffDepartmentPropertyOK()
+        {
+            clsStaff AStaff = new clsStaff();
+            string TestData = "Department";
+            AStaff.StaffDepartment = TestData;
+            Assert.AreEqual(AStaff.StaffDepartment, TestData);
+        }
+
+        [TestMethod]
+        public void StaffIdPropertyOK()
+        {
+            clsStaff AStaff = new clsStaff();
+            Int32 TestData = 1;
+            AStaff.StaffId = TestData;
+            Assert.AreEqual(AStaff.StaffId, TestData);
+        }
+
+
     }
 }
