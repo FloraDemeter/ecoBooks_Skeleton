@@ -76,6 +76,112 @@ namespace Testing3
             anOrder.OrderConfirmed = TestData;
             Assert.AreEqual(anOrder.OrderConfirmed, TestData);
         }
-
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            clsOrders anOrder = new clsOrders();
+            Boolean Found = false;
+            Int32 OrderNo = 1;
+            Found = anOrder.Find(OrderNo);
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestOrderNoFound()
+        {
+            clsOrders anOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderNo = 21;
+            Found = anOrder.Find(OrderNo);
+            if (anOrder.OrderID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestOrderDateFound()
+        {
+            clsOrders anOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderNo = 21;
+            Found = anOrder.Find(OrderNo);
+            if (anOrder.OrderDate != Convert.ToDateTime("16/01/2023"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerNoFound()
+        {
+            clsOrders anOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderNo = 21;
+            Found = anOrder.Find(OrderNo);
+            if (anOrder.CustomerNo != 97)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerNameFound()
+        {
+            clsOrders anOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderNo = 21;
+            Found = anOrder.Find(OrderNo);
+            if (anOrder.CustomerName != "John Smith")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestStockNoFound()
+        {
+            clsOrders anOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderNo = 21;
+            Found = anOrder.Find(OrderNo);
+            if (anOrder.StockNo != 45)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestStockPriceFound()
+        {
+            clsOrders anOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderNo = 21;
+            Found = anOrder.Find(OrderNo);
+            if (anOrder.StockPrice != 5.99)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestOrderConfirmedFound()
+        {
+            clsOrders anOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderNo = 21;
+            Found = anOrder.Find(OrderNo);
+            if (anOrder.OrderConfirmed != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
