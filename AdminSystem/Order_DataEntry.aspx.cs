@@ -30,4 +30,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         Response.Redirect("Order_List.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsOrders anOrders = new clsOrders();
+        Int32 OrderNo;
+        Boolean Found = false;
+        OrderNo = Convert.ToInt32("txtOrderID.text");
+        Found = anOrders.Find(OrderNo);
+        if (Found == true)
+        {
+            txtCustomerName.Text = anOrders.CustomerName;
+            txtCustomerNo.Text = anOrders.CustomerNo.ToString();
+            txtOrderDate.Text = anOrders.OrderDate.ToString();
+            txtStockNo.Text = anOrders.StockNo.ToString();
+            txtStockPrice.Text = anOrders.StockPrice.ToString();
+            chkOrderConf.Checked = anOrders.OrderConfirmed;
+        }
+
+    }
 }

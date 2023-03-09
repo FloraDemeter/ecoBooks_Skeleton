@@ -12,11 +12,6 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         clsOrders anOrder = new clsOrders();
         anOrder = (clsOrders)Session["anOrder"];
-        Response.Write(anOrder.OrderID);
-        Response.Write(anOrder.OrderDate);
-        Response.Write(anOrder.CustomerNo);
         Response.Write(anOrder.CustomerName);
-        Response.Write(anOrder.StockNo);
-        Response.Write(anOrder.StockPrice);
     }
 }

@@ -24,6 +24,8 @@
             <br />
             <asp:Label ID="lblCustomerNo" runat="server" Text="Customer Number" width="160px"></asp:Label>
             <asp:TextBox ID="txtCustomerNo" runat="server"></asp:TextBox>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
             <br />
             <asp:Label ID="lblCustomerName" runat="server" Text="Customer Name" width="160px"></asp:Label>
             <asp:TextBox ID="txtCustomerName" runat="server"></asp:TextBox>
