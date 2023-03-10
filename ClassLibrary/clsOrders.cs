@@ -103,7 +103,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@OrderID", OrderNo);
-            DB.Execute("sproc_tblAddress_FilterByAddressNo");
+            DB.Execute("sproc_tblOrder_FilterByOrderID");
             if (DB.Count == 1)
             {
                 mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
