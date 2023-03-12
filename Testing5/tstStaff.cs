@@ -52,15 +52,6 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void StaffRolePropertyOK()
-        {
-            clsStaff AStaff = new clsStaff();
-            string TestData = "Role";
-            AStaff.StaffRole = TestData;
-            Assert.AreEqual(AStaff.StaffRole, TestData);
-        }
-
-        [TestMethod]
         public void StaffDepartmentPropertyOK()
         {
             clsStaff AStaff = new clsStaff();
