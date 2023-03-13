@@ -111,13 +111,86 @@ namespace ClassLibrary
                 mCustomerNo = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerNo"]);
                 mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
                 mStockNo = Convert.ToInt32(DB.DataTable.Rows[0]["StockNo"]);
-                mStockPrice = Convert.ToDouble(DB.DataTable.Rows[0]["StockPriceNo"]);
+                mStockPrice = Convert.ToDouble(DB.DataTable.Rows[0]["StockPrice"]);
                 mOrderConfirmed = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderConfirmed"]);
                 return true;
             } else {
                 return false;
             }
             
+        }
+
+        public string Valid(string orderDate, string customerNo, string customerName, string stockNo, string stockPrice)
+        {
+            String Error = "";
+           //order date
+            try
+            {
+                DateTime DateTemp = Convert.ToDateTime(orderDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The OrderDate cannot be in the past. ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The OrderDate cannot be in the future. ";
+                }
+            } catch
+            {
+                Error = Error + "The date was not a valid date. ";
+            }
+            //customerNo
+            //try
+            //{
+                //if (customerNo.Length == 0)
+                //{
+                //    Error = Error + "The Customer No. may not be blank. ";
+                //}
+                if (Convert.ToInt32(customerNo) < 1)
+                {
+                    Error = Error + "The Customer No. cannot be less than 1. ";
+                }
+            //} catch
+            //{
+            //    Error = Error + "The Customer No. was not in a valid format. ";
+            //}
+            //customerName
+            if (customerName.Length == 0)
+            {
+                Error = Error + "The Customer Name may not be blank. ";
+            }
+            if (customerName.Length > 50)
+            {
+                Error = Error + "The Customer Name must be less than 50 characters. ";
+            }
+            //stockNo
+            //try
+            //{
+                //if (stockNo.Length == 0)
+                //{
+                //    Error = Error + "The Stock No. may not be blank. ";
+                //}
+                if (Convert.ToInt32(stockNo) < 1)
+                {
+                    Error = Error + "The Stock No. cannot be less than 1. ";
+                }
+            //}
+            //catch
+            //{
+            //    Error = Error + "The Stock No. was not in a valid format. ";
+            //}
+            //stockPrice
+            //try
+            //{
+                if (Convert.ToDouble(stockPrice) < 0.00)
+                {
+                    Error = Error + "The Stock Price cannot be less than 0. ";
+                }
+            //} catch
+            //{
+            //    Error = Error + "The Stock Price was not in a valid format. ";
+            //}
+            return Error;
         }
     }
 }

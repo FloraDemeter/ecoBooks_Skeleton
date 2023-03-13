@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 namespace ClassLibrary
 {
-    public class clsSupplier
+/*    public class clsSupplier
     {
     }
-}
+*/}

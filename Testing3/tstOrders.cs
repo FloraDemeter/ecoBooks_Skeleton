@@ -183,5 +183,146 @@ namespace Testing3
             }
             Assert.IsTrue(OK);
         }
+
+        string tstOrderDate = DateTime.Now.Date.ToString();
+        string tstCustomerNo = "45";
+        string tstCustomerName = "John Smith";
+        string tstStockNo = "28";
+        string tstStockPrice = "4.50";
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateExtremeMin()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string OrderDate = DateTime.Today.AddYears(-100).ToString();
+            Error = anOrder.Valid(OrderDate, tstCustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateMinLessOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string OrderDate = DateTime.Today.AddDays(-1).ToString();
+            Error = anOrder.Valid(OrderDate, tstCustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateMin()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string OrderDate = DateTime.Today.ToString();
+            Error = anOrder.Valid(OrderDate, tstCustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateMinAddOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string OrderDate = DateTime.Today.AddDays(1).ToString();
+            Error = anOrder.Valid(OrderDate, tstCustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateExtremeMax()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string OrderDate = DateTime.Today.AddYears(100).ToString();
+            Error = anOrder.Valid(OrderDate, tstCustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateInvalidType()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string OrderDate = "not a date";
+            Error = anOrder.Valid(OrderDate, tstCustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateInvalidType2()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string OrderDate = 13245.ToString();
+            Error = anOrder.Valid(OrderDate, tstCustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateInvalidType3()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string OrderDate = 12321.00.ToString();
+            Error = anOrder.Valid(OrderDate, tstCustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNoExtremeMin()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerNo = (-1000).ToString();
+            Error = anOrder.Valid(tstOrderDate, CustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNoMinLessOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerNo = (0).ToString();
+            Error = anOrder.Valid(tstOrderDate, CustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNoMin()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerNo = (1).ToString();
+            Error = anOrder.Valid(tstOrderDate, CustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNoAddOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerNo = (2).ToString();
+            Error = anOrder.Valid(tstOrderDate, CustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        //[TestMethod]
+        //public void CustomerNoInvalidType()
+        //{
+        //    clsOrders anOrder = new clsOrders();
+        //    String Error = "";
+        //    string CustomerNo = "not a date";
+        //    Error = anOrder.Valid(OrderDate, CustomerNo, CustomerName, StockNo, StockPrice);
+        //    Assert.AreNotEqual(Error, "");
+        //}
+        //[TestMethod]
+        //public void CustomerNoInvalidType2()
+        //{
+        //    clsOrders anOrder = new clsOrders();
+        //    String Error = "";
+        //    string CustomerNo = 13245.ToString();
+        //    Error = anOrder.Valid(OrderDate, CustomerNo, CustomerName, StockNo, StockPrice);
+        //    Assert.AreNotEqual(Error, "");
+        //}
     }
 }
