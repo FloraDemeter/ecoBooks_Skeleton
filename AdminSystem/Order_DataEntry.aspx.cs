@@ -16,15 +16,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsOrders anOrder = new clsOrders();
-        anOrder.OrderID = Convert.ToInt32(txtOrderNo.Text);
-        anOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
-        anOrder.CustomerNo = Convert.ToInt32(txtCustomerNo.Text);
-        anOrder.CustomerName = txtCustomerName.Text;
-        anOrder.StockNo = Convert.ToInt32(txtStockNo.Text);
-        anOrder.StockPrice = Convert.ToDouble(txtStockPrice.Text);
-        //anOrder.OrderConfirmed = Convert.ToBoolean(chkOrderConf);
-        Session["anOrder"] = anOrder;
-        Response.Redirect("Order_Viewer.aspx");
+        string orderDate = txtOrderDate.Text;
+        string customerNo = txtCustomerNo.Text;
+        string customerName = txtCustomerName.Text;
+        string stockNo = txtStockNo.Text;
+        string stockPrice = txtStockPrice.Text;
+        string orderConfirmed = Convert.ToString(chkOrderConf);
+        String Error = "";
+        if (Error == "")
+        {
+            anOrder.OrderID = Convert.ToInt32(txtOrderNo.Text);
+            anOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
+            anOrder.CustomerNo = Convert.ToInt32(txtCustomerNo.Text);
+            anOrder.CustomerName = txtCustomerName.Text;
+            anOrder.StockNo = Convert.ToInt32(txtStockNo.Text);
+            anOrder.StockPrice = Convert.ToDouble(txtStockPrice.Text);
+            anOrder.OrderConfirmed = Convert.ToBoolean(chkOrderConf);
+            Session["anOrder"] = anOrder;
+            Response.Redirect("Order_Viewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
     protected void btnCancel_Click(object sender, EventArgs e)
     {
@@ -36,7 +50,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsOrders anOrders = new clsOrders();
         Int32 OrderNo;
         Boolean Found = false;
-        OrderNo = Convert.ToInt32("txtOrderID.text");
+        OrderNo = Convert.ToInt32(txtOrderNo.Text);
         Found = anOrders.Find(OrderNo);
         if (Found == true)
         {
