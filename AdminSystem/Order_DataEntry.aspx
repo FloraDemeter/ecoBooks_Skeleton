@@ -43,9 +43,6 @@
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
             <br />
         </div>
-        <footer>
-                Date: *todays date*
-        </footer>
     </form>
 </body>
 </html>

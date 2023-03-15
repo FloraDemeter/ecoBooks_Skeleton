@@ -275,7 +275,7 @@ namespace Testing3
         {
             clsOrders anOrder = new clsOrders();
             String Error = "";
-            string CustomerNo = (-1000).ToString();
+            string CustomerNo = "-1000";
             Error = anOrder.Valid(tstOrderDate, CustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
             Assert.AreNotEqual(Error, "");
         }
@@ -284,7 +284,7 @@ namespace Testing3
         {
             clsOrders anOrder = new clsOrders();
             String Error = "";
-            string CustomerNo = (0).ToString();
+            string CustomerNo = "0";
             Error = anOrder.Valid(tstOrderDate, CustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
             Assert.AreNotEqual(Error, "");
         }
@@ -293,36 +293,189 @@ namespace Testing3
         {
             clsOrders anOrder = new clsOrders();
             String Error = "";
-            string CustomerNo = (1).ToString();
+            string CustomerNo = "1";
             Error = anOrder.Valid(tstOrderDate, CustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void CustomerNoAddOne()
+        public void CustomerNoMinAddOne()
         {
             clsOrders anOrder = new clsOrders();
             String Error = "";
-            string CustomerNo = (2).ToString();
+            string CustomerNo = "2";
             Error = anOrder.Valid(tstOrderDate, CustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
             Assert.AreEqual(Error, "");
         }
-        //[TestMethod]
-        //public void CustomerNoInvalidType()
-        //{
-        //    clsOrders anOrder = new clsOrders();
-        //    String Error = "";
-        //    string CustomerNo = "not a date";
-        //    Error = anOrder.Valid(OrderDate, CustomerNo, CustomerName, StockNo, StockPrice);
-        //    Assert.AreNotEqual(Error, "");
-        //}
-        //[TestMethod]
-        //public void CustomerNoInvalidType2()
-        //{
-        //    clsOrders anOrder = new clsOrders();
-        //    String Error = "";
-        //    string CustomerNo = 13245.ToString();
-        //    Error = anOrder.Valid(OrderDate, CustomerNo, CustomerName, StockNo, StockPrice);
-        //    Assert.AreNotEqual(Error, "");
-        //}
+        [TestMethod]
+        public void CustomerNoInvalidType()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerNo = "this is not integer";
+            Error = anOrder.Valid(tstOrderDate, CustomerNo, tstCustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMinLessOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerName = "";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, CustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMin()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerName = "0";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, CustomerName, tstStockNo, tstStockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMinAddOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerName = "01";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, CustomerName, tstStockNo, tstStockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMaxLessOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerName = "0123456789012345678901234567890123456789012345678";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, CustomerName, tstStockNo, tstStockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMax()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerName = "01234567890123456789012345678901234567890123456789";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, CustomerName, tstStockNo, tstStockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMaxAddOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerName = "012345678901234567890123456789012345678901234567890";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, CustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMid()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerName = "0123456789012345678901234";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, CustomerName, tstStockNo, tstStockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameExtremeMax()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string CustomerName = "012345678901234567890123456789012345678901234567890012345678901234567890123456789012345678901234567890012345678901234567890123456789012345678901234567890";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, CustomerName, tstStockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockNoExtremeMin()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockNo = "-1000";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, StockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockNoMinLessOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockNo = "0";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, StockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockNoMin()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockNo = "1";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, StockNo, tstStockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockNoMinAddOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockNo = "2";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, StockNo, tstStockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockNoInvalidType()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockNo = "this is not integer";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, StockNo, tstStockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockPriceExtremeMin()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockPrice = (-1000.00).ToString();
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, tstStockNo, StockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockPriceMinLessOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockPrice = "-0.01";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, tstStockNo, StockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockPriceMin()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockPrice = "0.00";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, tstStockNo, StockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockPriceMinAddOne()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockPrice = "0.01";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, tstStockNo, StockPrice);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockPriceInvalidType()
+        {
+            clsOrders anOrder = new clsOrders();
+            String Error = "";
+            string StockPrice = "this is not double";
+            Error = anOrder.Valid(tstOrderDate, tstCustomerNo, tstCustomerName, tstStockNo, StockPrice);
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
