@@ -160,8 +160,95 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
         }
+        string tstStockName = "Stock3";
+        string tstDescription = "Book3";
+        string tstStockQuantity = "6";
+        string tstProcessedDate = DateTime.Now.Date.ToString();
         
-            }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            Error = aStock.Valid(tstStockName, tstDescription, tstStockQuantity, tstProcessedDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProcessedDateExtremeMin()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            string ProcessedDate = DateTime.Today.AddYears(-100).ToString();
+            Error = aStock.Valid(tstStockName, tstDescription, tstStockQuantity, tstProcessedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProcessedDateMinLessOne()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            string ProcessedDate = DateTime.Today.AddDays(-1).ToString();
+            Error = aStock.Valid(tstStockName, tstDescription, tstStockQuantity, tstProcessedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProcessedDateMin()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            string ProcessedDate = DateTime.Today.ToString();
+            Error = aStock.Valid(tstStockName, tstDescription, tstStockQuantity, tstProcessedDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProcessedDateMinAddOne()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            string ProcessedDate = DateTime.Today.AddDays(1).ToString();
+            Error = aStock.Valid(tstStockName, tstDescription, tstStockQuantity, tstProcessedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProcessedDateExtremeMax()
+        {
+            clsOrders aStock = new clsOrders();
+            String Error = "";
+            string ProcessedDate = DateTime.Today.AddYears(100).ToString();
+            Error = aStock.Valid(tstStockName, tstDescription, tstStockQuantity, tstProcessedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProcessedDateInvalidType()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            string ProcessedDate = "not a date";
+            Error = aStock.Valid(tstStockName, tstDescription, tstStockQuantity, tstProcessedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProcessedDateInvalidType2()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            string ProcessedDate = 13245.ToString();
+            Error = aStock.Valid(tstStockName, tstDescription, tstStockQuantity, tstProcessedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProcessedDateInvalidType3()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            string ProcessedDate = 12321.00.ToString();
+            Error = aStock.Valid(tstStockName, tstDescription, tstStockQuantity, tstProcessedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        
+
+
+    }
         }
     }
 
