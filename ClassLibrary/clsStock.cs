@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Class_Library
+namespace ClassLibrary
 {
     public class clsStock
     {
@@ -107,6 +107,11 @@ namespace Class_Library
                 return false;
             }
             
+        }
+
+        public string Valid(string tstStockName, string tstDescription, string tstStockQuantity, string tstProcessedDate)
+        {
+            throw new NotImplementedException();
         }
     }
 }
