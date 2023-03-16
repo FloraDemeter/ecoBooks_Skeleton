@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Class_Library;
+using ClassLibrary;
 
 public partial class _1Viewer : System.Web.UI.Page
 {
