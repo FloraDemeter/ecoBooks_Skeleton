@@ -109,9 +109,63 @@ namespace ClassLibrary
             
         }
 
-        public string Valid(string tstStockName, string tstDescription, string tstStockQuantity, string tstProcessedDate)
+        public string Valid(string StockName, string Description, string StockQuantity, string ProcessedDate)
         {
-            throw new NotImplementedException();
+            String Error = "";
+            //Processed date
+            try
+            {
+                DateTime DateTemp = Convert.ToDateTime(ProcessedDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The ProcessedDate cannot be in the past. ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The ProcessedDate cannot be in the future. ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date. ";
+            }
+            
+            //StockName
+            if (StockName.Length == 0)
+            {
+                Error = Error + "The Stock Name may not be blank. ";
+            }
+            if (StockName.Length > 50)
+            {
+                Error = Error + "The Stock Name must be less than 50 characters. ";
+            }
+            //StockQuantity
+            try
+            {
+                if (StockQuantity.Length == 0)
+                {
+                    Error = Error + "The Stock Quantity may not be blank. ";
+                }
+                if (Convert.ToInt32(StockQuantity) < 1)
+                {
+                    Error = Error + "The Stock Quantity cannot be less than 1. ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The Stock Quantity was not a valid date. ";
+            }
+            //Description
+            if (Description.Length == 0)
+            {
+                Error = Error + "The Description may not be blank. ";
+            }
+            if (Description.Length > 50)
+            {
+                Error = Error + "The Description must be less than 50 characters. ";
+            }
+
+            return Error;
         }
     }
 }
