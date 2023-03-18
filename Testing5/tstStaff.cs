@@ -38,8 +38,8 @@ namespace Testing5
         {
             clsStaff AStaff = new clsStaff();
             string TestData = "First Name";
-            AStaff.StaffFirstName = TestData;
-            Assert.AreEqual(AStaff.StaffFirstName, TestData);
+            AStaff.FirstName = TestData;
+            Assert.AreEqual(AStaff.FirstName, TestData);
         }
 
         [TestMethod]
@@ -47,8 +47,8 @@ namespace Testing5
         {
             clsStaff AStaff = new clsStaff();
             string TestData = "Last Name";
-            AStaff.StaffLastName = TestData;
-            Assert.AreEqual(AStaff.StaffLastName, TestData);
+            AStaff.LastName = TestData;
+            Assert.AreEqual(AStaff.LastName, TestData);
         }
 
         [TestMethod]
@@ -56,8 +56,8 @@ namespace Testing5
         {
             clsStaff AStaff = new clsStaff();
             string TestData = "Department";
-            AStaff.StaffDepartment = TestData;
-            Assert.AreEqual(AStaff.StaffDepartment, TestData);
+            AStaff.Department = TestData;
+            Assert.AreEqual(AStaff.Department, TestData);
         }
 
         [TestMethod]
@@ -69,6 +69,107 @@ namespace Testing5
             Assert.AreEqual(AStaff.StaffId, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStaff AStaff = new clsStaff();
+            Boolean Found = false;
+            Int32 StaffId = 4;
+            Found = AStaff.Find(StaffId);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestStaffIdFound()
+        {
+            clsStaff AStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StaffId = 4;
+            Found = AStaff.Find(StaffId);
+            if (AStaff.StaffId != 4)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsStaff AStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StaffId = 4;
+            Found = AStaff.Find(StaffId);
+            if(AStaff.DateAdded !=Convert.ToDateTime(28/11/2001))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            clsStaff AStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StaffId = 4;
+            Found = AStaff.Find(StaffId);
+            if (AStaff.Active != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        
+        [TestMethod]
+        public void TestFirstNameFound()
+        {
+            clsStaff Astaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StaffId = 4;
+            Found = Astaff.Find(StaffId);
+            if(Astaff.FirstName != "Sumedh")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestLastNameFound()
+        {
+            clsStaff AStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StaffId = 4;
+            Found = AStaff.Find(StaffId);
+            if(AStaff.LastName != "Singare")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDepartmentFound()
+        {
+            clsStaff AStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StaffId = 4;
+            Found = AStaff.Find(StaffId);
+            if(AStaff.Department != "Staff")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+      }
 
     }
-}
