@@ -56,8 +56,8 @@ namespace Testing5
         {
             clsStaff AStaff = new clsStaff();
             string TestData = "Department";
-            AStaff.Department = TestData;
-            Assert.AreEqual(AStaff.Department, TestData);
+            AStaff.StaffDepartment = TestData;
+            Assert.AreEqual(AStaff.StaffDepartment, TestData);
         }
 
         [TestMethod]
@@ -102,7 +102,7 @@ namespace Testing5
             Boolean OK = true;
             Int32 StaffId = 4;
             Found = AStaff.Find(StaffId);
-            if(AStaff.DateAdded !=Convert.ToDateTime(28/11/2001))
+            if(AStaff.DateAdded !=Convert.ToDateTime("28/11/2001"))
             {
                 OK = false;
             }
@@ -132,7 +132,7 @@ namespace Testing5
             Boolean OK = true;
             Int32 StaffId = 4;
             Found = Astaff.Find(StaffId);
-            if(Astaff.FirstName != "Sumedh")
+            if(Astaff.FirstName != "Aayush")
             {
                 OK = false;
             }
@@ -147,7 +147,7 @@ namespace Testing5
             Boolean OK = true;
             Int32 StaffId = 4;
             Found = AStaff.Find(StaffId);
-            if(AStaff.LastName != "Singare")
+            if(AStaff.LastName != "Moradiya")
             {
                 OK = false;
             }
@@ -162,14 +162,13 @@ namespace Testing5
             Boolean OK = true;
             Int32 StaffId = 4;
             Found = AStaff.Find(StaffId);
-            if(AStaff.Department != "Staff")
+            if(AStaff.StaffDepartment != "Stock")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
 
-
-      }
+    }
 
     }
