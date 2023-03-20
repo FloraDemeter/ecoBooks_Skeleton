@@ -74,7 +74,7 @@ namespace ClassLibrary
         }
 
         private string mDepartment;
-        public string Department
+        public string StaffDepartment
         {
             get
             {
@@ -89,13 +89,24 @@ namespace ClassLibrary
 
         public bool Find(int StaffId)
         {
-            mStaffId = 4;
-            mDateAdded = Convert.ToDateTime("28/11/2001");
-            mActive = true;
-            mFirstName = "Sumedh";
-            mLastName = "Singare";
-            mDepartment = "Staff";
-            return true;
+
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffId", StaffId);
+            DB.Execute("sproc_tblStaff_FilterByStaffId");
+            if (DB.Count == 1)
+            {
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["staffId"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["staffDateOfBirth"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["staffAdmin"]);
+                mFirstName = Convert.ToString(DB.DataTable.Rows[0]["staffFirstName"]);
+                mLastName = Convert.ToString(DB.DataTable.Rows[0]["staffLastName"]);
+                mDepartment = Convert.ToString(DB.DataTable.Rows[0]["staffDepartment"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
        
     }

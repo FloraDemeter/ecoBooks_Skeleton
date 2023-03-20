@@ -10,9 +10,10 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:Label ID="StaffId" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute; bottom: 615px;" Text="Staff Id"></asp:Label>
+        <asp:Label ID="StaffId" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute; bottom: 615px; right: 462px;" Text="Staff Id"></asp:Label>
         <asp:TextBox ID="txtStaffId" runat="server" style="z-index: 1; left: 103px; top: 36px; position: absolute"></asp:TextBox>
         <asp:Label ID="DateOfBirth" runat="server" style="z-index: 1; left: 10px; top: 62px; position: absolute; height: 22px" Text="Date Of Birth"></asp:Label>
+            <asp:Button ID="btnFind" runat="server" Height="31px" style="margin-left: 257px" Text="Find" Width="69px" OnClick="btnFind_Click1" />
         <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </p>
