@@ -19,21 +19,49 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStock
         clsStock aStock = new clsStock();
         
-        aStock.StockNo = Convert.ToInt32(txtStockNo.Text);
-        aStock.StockName = txtStockName.Text;
-        aStock.Description = txtDescription.Text;
-        aStock.StockQuantity = Convert.ToInt32(txtStockQuantity.Text);
-        aStock.ProcessedDate = Convert.ToDateTime(txtProcessedDate.Text);
-        aStock.Available = Convert.ToBoolean(chkAvailable);
-        Session["aStock"] = aStock;
-        //navigate to the viewer page
-        Response.Redirect("Stock_Viewer.aspx");
+        string StockNo = txtStockNo.Text;
+        string StockName = txtStockName.Text;
+        string Description = txtDescription.Text;
+        string StockQuantity = txtStockQuantity.Text;
+        string ProcessedDate = txtProcessedDate.Text;
+        string Available = Convert.ToString(chkAvailable);
+        string Error = "";
+        Error = aStock.Valid(StockNo, );
+        if (Error == "")
+        {
+            aStock.StockNo = Convert.ToInt32(txtStockNo.Text);
+            aStock.StockName = txtStockName.Text;
+            aStock.Description = txtDescription.Text;
+            aStock.StockQuantity = Convert.ToInt32(txtStockQuantity.Text);
+            aStock.ProcessedDate = Convert.ToDateTime(txtProcessedDate.Text);
+            aStock.Available = Convert.ToBoolean(chkAvailable);
+            Session["aStock"] = aStock;
+            Response.Redirect("Stock_Viewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
 
 
     }
+    
 
-    protected void btnCancel_Click(object sender, EventArgs e)
+protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Order_List.aspx");
+        clsStock aStock = new clsStock();
+        Int32 StockNo;
+        Boolean Found = false;
+        StockNo = Convert.ToInt32(txtStockNo.Text);
+        Found = aStock.Find(StockNo);
+        if (Found == true)
+        {
+           
+
+            txtStockName.Text = aStock.StockName;
+            txtDescription.Text = aStock.Description;
+            txtStockQuantity.Text = aStock.StockQuantity.ToString;
+        }
+
     }
 }
