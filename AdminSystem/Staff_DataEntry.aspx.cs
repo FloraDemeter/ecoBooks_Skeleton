@@ -16,41 +16,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
-        string StaffId = txtStaffId.Text;
+        string StaffId = txtStaffID.Text;
         string FirstName = txtFirstName.Text;
         string LastName = txtLastName.Text;
         string DateOfBirth = txtDateOfBirth.Text;
         string StaffDepartment = txtStaffDepartment.Text;
         string Error = "";
+
+        Error = AStaff.Valid(DateOfBirth, FirstName, LastName, StaffDepartment);
         if (Error == "")
         {
+            AStaff.DateOfBirth = Convert.ToDateTime(DateOfBirth);
             AStaff.FirstName = FirstName;
             AStaff.LastName = LastName;
-            AStaff.DateAdded = Convert.ToDateTime(DateOfBirth);
             AStaff.StaffDepartment = StaffDepartment;
+            AStaff.Admin = chkAdmin.Checked;
             Session["AStaff"] = AStaff;
-            Response.Write("Staff_Viewer.aspx");
+            Response.Redirect("Staff_Viewer.aspx");
         }
+        else
         {
             lblError.Text = Error;
         }
     }
 
 
-    protected void btnFind_Click1(object sender, EventArgs e)
+    protected void btnFind_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
         Int32 StaffId;
         Boolean Found = false;
-        StaffId = Convert.ToInt32(txtStaffId.Text);
+        StaffId = Convert.ToInt32(txtStaffID.Text);
         Found = AStaff.Find(StaffId);
         if (Found == true)
         {
             txtFirstName.Text = AStaff.FirstName;
             txtLastName.Text = AStaff.LastName;
-            txtDateOfBirth.Text = AStaff.DateAdded.ToString();
+            txtDateOfBirth.Text = AStaff.DateOfBirth.ToString();
             txtStaffDepartment.Text = AStaff.StaffDepartment;
-            chkAdmin.Checked = AStaff.Active;
+            chkAdmin.Checked = AStaff.Admin;
         }
     }
 }
