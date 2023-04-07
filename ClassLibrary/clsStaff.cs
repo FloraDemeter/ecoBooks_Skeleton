@@ -7,43 +7,43 @@ namespace ClassLibrary
     public class clsStaff
     {
 
-        private Int32 mStaffId;
+        private Int32 mStaffID;
 
-        public Int32 StaffId
+        public Int32 StaffID
         {
             get
             {
-                return mStaffId;
+                return mStaffID;
             }
             set
             {
-                mStaffId = value;
+                mStaffID = value;
             }
         }
 
-        private DateTime mDateAdded;
-        public DateTime DateAdded
+        private DateTime mDateOfBirth;
+        public DateTime DateOfBirth
         {
             get
             {
-                return mDateAdded;
+                return mDateOfBirth;
             }
             set
             {
-                mDateAdded = value;
+                mDateOfBirth = value;
             }
         }
 
-        private Boolean mActive;
-        public bool Active
+        private Boolean mAdmin;
+        public bool Admin
         {
             get
             {
-                return mActive;
+                return mAdmin;
             }
             set
             {
-                mActive = value;
+                mAdmin = value;
             }
         }
 
@@ -87,17 +87,17 @@ namespace ClassLibrary
         }
 
 
-        public bool Find(int StaffId)
+        public bool Find(int StaffID)
         {
 
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@StaffId", StaffId);
-            DB.Execute("sproc_tblStaff_FilterByStaffId");
+            DB.AddParameter("@StaffID", StaffID);
+            DB.Execute("sproc_tblStaff_FilterByStaffID");
             if (DB.Count == 1)
             {
-                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["staffId"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["staffDateOfBirth"]);
-                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["staffAdmin"]);
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["staffID"]);
+                mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["staffDateOfBirth"]);
+                mAdmin = Convert.ToBoolean(DB.DataTable.Rows[0]["staffAdmin"]);
                 mFirstName = Convert.ToString(DB.DataTable.Rows[0]["staffFirstName"]);
                 mLastName = Convert.ToString(DB.DataTable.Rows[0]["staffLastName"]);
                 mDepartment = Convert.ToString(DB.DataTable.Rows[0]["staffDepartment"]);
@@ -108,6 +108,68 @@ namespace ClassLibrary
                 return false;
             }
         }
-       
+
+        public string Valid(string dateOfBirth, string firstName, string lastName, string department)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store values
+            DateTime DateTemp;
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+                if (DateTemp > DateTime.Now.Date.AddYears(-18))
+                {
+                    Error = Error + "Staff members cannot be under 18 : ";
+                }
+                if (DateTemp < DateTime.Now.Date.AddYears(-70))
+                {
+                    Error = Error + "Staff members cannot be over 70 : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //validation for the FirstName field
+            if (firstName.Length < 2)
+            {
+                //record the error
+                Error = Error + "The first name must be at least two characters : ";
+            }
+            if (firstName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The first name must be a maximum of 50 characters : ";
+            }
+
+            //validation for the FirstName field
+            if (lastName.Length < 2)
+            {
+                //record the error
+                Error = Error + "The last name must be at least two characters : ";
+            }
+            if (lastName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The last name must be a maximum of 50 characters : ";
+            }
+
+            //validation for the FirstName field
+            if (department.Length < 2)
+            {
+                //record the error
+                Error = Error + "The department must be at least two characters : ";
+            }
+            if (department.Length > 50)
+            {
+                //record the error
+                Error = Error + "The department must be a maximum of 50 characters : ";
+            }
+
+            return Error;
+        }
     }
 }
