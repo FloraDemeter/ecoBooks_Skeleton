@@ -198,5 +198,10 @@ namespace ClassLibrary
 
             return Error;
         }
+
+        public static implicit operator clsOrders(clsCustomers v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
