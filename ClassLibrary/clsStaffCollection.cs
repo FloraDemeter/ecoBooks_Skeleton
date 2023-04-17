@@ -7,6 +7,7 @@ namespace ClassLibrary
     public class clsStaffCollection
     {
         List<clsStaff> mStaffList = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
 
         public clsStaffCollection()
         {
@@ -50,6 +51,22 @@ namespace ClassLibrary
                 //later
             }
         }
-        public clsStaff ThisStaff { get; set; }
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                return mThisStaff;
+            }
+            set
+            {
+                mThisStaff = value;
+            }
+        }
+
+        public int Add()
+        {
+            mThisStaff.StaffID = 9;
+            return mThisStaff.StaffID;
+        }
     }
 }
