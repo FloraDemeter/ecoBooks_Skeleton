@@ -31,7 +31,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStaff.LastName = LastName;
             AStaff.StaffDepartment = StaffDepartment;
             AStaff.Admin = chkAdmin.Checked;
-            Session["AStaff"] = AStaff;
+            clsStaffCollection StaffList = new clsStaffCollection();
+            StaffList.ThisStaff = AStaff;
+            StaffList.Add();
             Response.Redirect("Staff_Viewer.aspx");
         }
         else

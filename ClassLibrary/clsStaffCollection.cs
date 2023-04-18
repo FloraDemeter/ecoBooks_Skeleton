@@ -65,8 +65,13 @@ namespace ClassLibrary
 
         public int Add()
         {
-            mThisStaff.StaffID = 9;
-            return mThisStaff.StaffID;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@staffFirstName", mThisStaff.FirstName);
+            DB.AddParameter("@staffLastName", mThisStaff.LastName);
+            DB.AddParameter("@staffDateOfBirth", mThisStaff.DateOfBirth);
+            DB.AddParameter("@staffDepartment", mThisStaff.StaffDepartment);
+            DB.AddParameter("@staffAdmin", mThisStaff.Admin);
+            return DB.Execute("sproc_tblStaff_Insert");
         }
     }
 }

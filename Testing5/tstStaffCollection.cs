@@ -117,7 +117,7 @@ namespace Testing5
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaff TestItem = new clsStaff();
-            Int32 PrimaryKey = 0;
+            Int32 PrimaryKey = 1;
             TestItem.Admin = true;
             TestItem.FirstName = "Sumedh";
             TestItem.LastName = "Singare";
@@ -130,6 +130,38 @@ namespace Testing5
             AllStaff.ThisStaff.Find(PrimaryKey);
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
+
+       
+        /*
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.Admin = true;
+            TestItem.FirstName = "Sumedh";
+            TestItem.LastName = "Singare";
+            TestItem.StaffDepartment = "Staff";
+            TestItem.StaffID = 9;
+            TestItem.DateOfBirth = DateTime.Now.Date;
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            //--------------
+            TestItem.Admin = true;
+            TestItem.FirstName = "Aayush";
+            TestItem.LastName = "Moradiya";
+            TestItem.StaffDepartment = "Stock",
+            TestItem.StaffID = 4;
+            TestItem.DateOfBirth = DateTime.Now.Date;
+            AllStaff.ThisStaff = TestItem;
+            AllStaff.Update();
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff,TestItem);
+
+        }
+        */
+
 
 
     }
