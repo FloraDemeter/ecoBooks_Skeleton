@@ -43,6 +43,9 @@ namespace ClassLibrary
                 mSupplyDate = value;
             }
         }
+
+       
+
         private bool mUK;
         public bool UK
         {
@@ -83,15 +86,25 @@ namespace ClassLibrary
    
         public bool Find(int supplierNo)
         {
-            mSupplierNo = 3;
-            mSupplierName = "Costcutter";
-            mSupplyDate = Convert.ToDateTime("14/02/2023");
-            mUK = true;
-            mSupplierAddress = "Leeds";
-            mSupplierContactNo = 9876674;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierNo", SupplierNo);
+            DB.Execute("sproc_tblSupplier_FillterByAupplierNo");
+            if (DB.Count == 1)
+            {
+                mSupplierNo = Convert.ToInt32(DB.DataTable.Rows[0]["Supplier"]);
+                mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
+                mSupplyDate = Convert.ToDateTime(DB.DataTable.Rows[0]["SupplyDate"]);
+                mUK = Convert.ToBoolean(DB.DataTable.Rows[0]["UK"]);
+                mSupplierAddress = Convert.ToString(DB.DataTable.Rows[0]["SupplierAddress"]);
+                mSupplierContactNo = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierContactNo"]);
 
-
-            return true;
+               
+                return true;
+            }
+             else
+            {
+                return false;
+            }
         }
     }
 }
