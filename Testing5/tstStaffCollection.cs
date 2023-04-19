@@ -131,8 +131,8 @@ namespace Testing5
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
 
-       
-        /*
+
+
         [TestMethod]
         public void UpdateMethodOK()
         {
@@ -143,16 +143,15 @@ namespace Testing5
             TestItem.FirstName = "Sumedh";
             TestItem.LastName = "Singare";
             TestItem.StaffDepartment = "Staff";
-            TestItem.StaffID = 9;
             TestItem.DateOfBirth = DateTime.Now.Date;
             AllStaff.ThisStaff = TestItem;
             PrimaryKey = AllStaff.Add();
+            TestItem.StaffID = PrimaryKey;
             //--------------
             TestItem.Admin = true;
             TestItem.FirstName = "Aayush";
             TestItem.LastName = "Moradiya";
-            TestItem.StaffDepartment = "Stock",
-            TestItem.StaffID = 4;
+            TestItem.StaffDepartment = "Stock";
             TestItem.DateOfBirth = DateTime.Now.Date;
             AllStaff.ThisStaff = TestItem;
             AllStaff.Update();
@@ -160,7 +159,6 @@ namespace Testing5
             Assert.AreEqual(AllStaff.ThisStaff,TestItem);
 
         }
-        */
 
 
 

@@ -40,7 +40,9 @@
         <p>
             &nbsp;</p>
         <p>
-            &nbsp;</p>
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 60px; top: 565px; position: absolute" Text="Edit" />
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 17px; top: 606px; position: absolute"></asp:Label>
+        </p>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 13px; top: 565px; position: absolute" Text="Add" />
     </form>
 </body>
