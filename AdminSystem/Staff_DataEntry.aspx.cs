@@ -8,8 +8,18 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+
+    Int32 StaffID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        StaffID = Convert.ToInt32(Session["StaffID"]);
+        if(IsPostBack == false)
+        {
+            if(StaffID != -1)
+            {
+                DisplayStaff();
+            }
+        }
         
     }
 
@@ -26,15 +36,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AStaff.Valid(DateOfBirth, FirstName, LastName, StaffDepartment);
         if (Error == "")
         {
+            AStaff.StaffID = StaffID;
             AStaff.DateOfBirth = Convert.ToDateTime(DateOfBirth);
             AStaff.FirstName = FirstName;
             AStaff.LastName = LastName;
             AStaff.StaffDepartment = StaffDepartment;
             AStaff.Admin = chkAdmin.Checked;
             clsStaffCollection StaffList = new clsStaffCollection();
-            StaffList.ThisStaff = AStaff;
-            StaffList.Add();
-            Response.Redirect("Staff_Viewer.aspx");
+            
+            if(StaffID == -1)
+            {
+                StaffList.ThisStaff = AStaff;
+                StaffList.Add();
+            }
+            else
+            {
+                StaffList.ThisStaff.Find(StaffID);
+                StaffList.ThisStaff = AStaff;
+                StaffList.Update();
+            }
+            Response.Redirect("Staff_List.aspx");
+            
         }
         else
         {
