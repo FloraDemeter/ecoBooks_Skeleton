@@ -8,10 +8,28 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        OrderID = Convert.ToInt32(Session["OrderID"]);
+        if (IsPostBack == false)
+        {
+            if (OrderID != -1)
+            {
+                DisplayOrders();
+            }
+        }
     }
+    void DisplayOrders()
+    {
+       /* clsOrderCollection Orders = new clsOrderCollection();
+        lstOrderList.DataSource = Orders.OrderList;
+        lstOrderList.DataValueField = "OrderID";
+        lstOrderList.DataTextField = "CustomerNo";
+        lstOrderList.DataBind();*/
+    }
+
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -23,17 +41,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string stockPrice = txtStockPrice.Text;
         string orderConfirmed = Convert.ToString(chkOrderConf);
         String Error = "";
+        Error = anOrder.Valid(orderDate, customerNo, customerName, stockNo, stockPrice);
         if (Error == "")
         {
-            anOrder.OrderID = Convert.ToInt32(txtOrderNo.Text);
-            anOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
-            anOrder.CustomerNo = Convert.ToInt32(txtCustomerNo.Text);
-            anOrder.CustomerName = txtCustomerName.Text;
-            anOrder.StockNo = Convert.ToInt32(txtStockNo.Text);
-            anOrder.StockPrice = Convert.ToDouble(txtStockPrice.Text);
-            anOrder.OrderConfirmed = Convert.ToBoolean(chkOrderConf);
-            Session["anOrder"] = anOrder;
-            Response.Redirect("Order_Viewer.aspx");
+            anOrder.OrderID = OrderID;
+            anOrder.OrderDate = Convert.ToDateTime(orderDate);
+            anOrder.CustomerNo = Convert.ToInt32(customerNo);
+            anOrder.CustomerName = customerName;
+            anOrder.StockNo = Convert.ToInt32(stockNo);
+            anOrder.StockPrice = Convert.ToDouble(stockPrice);
+            anOrder.OrderConfirmed = chkOrderConf.Checked;
+            clsOrderCollection OrderList = new clsOrderCollection();
+            if (OrderID == -1)
+            {
+                OrderList.ThisOrder = anOrder;
+                OrderList.Add();
+            } else
+            {
+                OrderList.ThisOrder.Find(OrderID);
+                OrderList.ThisOrder = anOrder;
+                OrderList.Update();
+            }
+            Response.Redirect("Order_List.aspx");
         }
         else
         {
