@@ -11,23 +11,9 @@ namespace ClassLibrary
 
         public clsStaffCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblStaff_SelectAll");
-            RecordCount = DB.Count;
-            while(Index < RecordCount)
-            {
-                clsStaff AStaff = new clsStaff();
-                AStaff.StaffID = Convert.ToInt32(DB.DataTable.Rows[0]["staffID"]);
-                AStaff.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["staffDateOfBirth"]);
-                AStaff.Admin = Convert.ToBoolean(DB.DataTable.Rows[0]["staffAdmin"]);
-                AStaff.FirstName = Convert.ToString(DB.DataTable.Rows[0]["staffFirstName"]);
-                AStaff.LastName = Convert.ToString(DB.DataTable.Rows[0]["staffLastName"]);
-                AStaff.StaffDepartment = Convert.ToString(DB.DataTable.Rows[0]["staffDepartment"]);
-                mStaffList.Add(AStaff);
-                Index++;
-            }
+            PopulateArray(DB);
         }
         public List<clsStaff> StaffList
         {
@@ -77,7 +63,7 @@ namespace ClassLibrary
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@staffID", mThisStaff.StaffID);
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
             DB.AddParameter("@staffFirstName", mThisStaff.FirstName);
             DB.AddParameter("@staffLastName", mThisStaff.LastName);
             DB.AddParameter("@staffDateOfBirth", mThisStaff.DateOfBirth);
@@ -91,6 +77,35 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@StaffID", mThisStaff.StaffID);
             DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void ReportByFirstName(string FirstName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@FirstName", FirstName);
+            DB.Execute("sproc_tblStaff_FilterByFirstName");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mStaffList = new List<clsStaff>();
+            while(Index < RecordCount)
+            {
+                clsStaff AStaff = new clsStaff();
+                AStaff.StaffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffID"]);
+                AStaff.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["staffDateOfBirth"]);
+                AStaff.Admin = Convert.ToBoolean(DB.DataTable.Rows[Index]["staffAdmin"]);
+                AStaff.FirstName = Convert.ToString(DB.DataTable.Rows[Index]["staffFirstName"]);
+                AStaff.LastName = Convert.ToString(DB.DataTable.Rows[Index]["staffLastName"]);
+                AStaff.StaffDepartment = Convert.ToString(DB.DataTable.Rows[Index]["staffDepartment"]);
+                mStaffList.Add(AStaff);
+                Index++;
+            }
+ 
         }
     }
 }

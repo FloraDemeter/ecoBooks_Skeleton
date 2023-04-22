@@ -20,7 +20,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 DisplayStaff();
             }
         }
-        
+
+    }
+
+    void DisplayStaff()
+    {
+        clsStaffCollection Staff = new clsStaffCollection();
+        Staff.ThisStaff.Find(StaffID);
+        txtStaffID.Text = Staff.ThisStaff.StaffID.ToString();
+        txtFirstName.Text = Staff.ThisStaff.FirstName;
+        txtLastName.Text = Staff.ThisStaff.LastName;
+        txtStaffDepartment.Text = Staff.ThisStaff.StaffDepartment;
+        txtDateOfBirth.Text = Staff.ThisStaff.DateOfBirth.ToString();
+        chkAdmin.Checked = Staff.ThisStaff.Admin;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)

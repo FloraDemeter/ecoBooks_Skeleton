@@ -21,7 +21,7 @@ public partial class _1_List : System.Web.UI.Page
         clsStaffCollection Staff = new clsStaffCollection();
         lstStaffList.DataSource = Staff.StaffList;
         lstStaffList.DataValueField = "StaffID";
-        lstStaffList.DataTextField = "StaffDepartment";
+        lstStaffList.DataTextField = "FirstName";
         lstStaffList.DataBind();
     }
 
@@ -49,9 +49,9 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         Int32 StaffID;
-        if (lstStaff.SelectedIndex != -1)
+        if (lstStaffList.SelectedIndex != -1)
         {
-            StaffID = Convert.ToInt32(lstStaff.SelectedValue);
+            StaffID = Convert.ToInt32(lstStaffList.SelectedValue);
             Session["StaffID"] = StaffID;
             Response.Redirect("Staff_ConfirmDelete.aspx");
         }
@@ -59,5 +59,26 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please select a record to delete from the list";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection Staff = new clsStaffCollection();
+        Staff.ReportByFirstName(txtFilter.Text);
+        lstStaffList.DataSource = Staff.StaffList;
+        lstStaffList.DataValueField = "StaffId";
+        lstStaffList.DataTextField = "FirstName";
+        lstStaffList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection Staff = new clsStaffCollection();
+        Staff.ReportByFirstName("");
+        txtFilter.Text = "";
+        lstStaffList.DataSource = Staff.StaffList;
+        lstStaffList.DataValueField = "StaffId";
+        lstStaffList.DataTextField = "FirstName";
+        lstStaffList.DataBind();
     }
 }

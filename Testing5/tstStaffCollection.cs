@@ -35,17 +35,6 @@ namespace Testing5
             Assert.AreEqual(AllStaff.StaffList, TestList);
         }
 
-      /*
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            Int32 SomeCount = 2;
-            AllStaff.Count = SomeCount;
-            Assert.AreEqual(AllStaff.Count, SomeCount);
-        }
-      */
-
         [TestMethod]
         public void ThisStaffPropertyOK()
         {
@@ -78,39 +67,6 @@ namespace Testing5
             AllStaff.StaffList = TestList;
             Assert.AreEqual(AllStaff.Count, TestList.Count);
         }
-
-      /*
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            Assert.AreEqual(AllStaff.Count, 2);
-        }
-      */
-        
-       
-        
-        /*
-        //constructor of the class
-        public clsStaffCollection()
-        {
-            clsStaff TestItem = new clsStaff();
-            TestItem.Admin = true;
-            TestItem.FirstName = "Sumedh";
-            TestItem.LastName = "Singare";
-            TestItem.StaffDepartment = "Staff";
-            TestItem.StaffID = 9;
-            TestItem.DateOfBirth = DateTime.Now.Date;
-            mStaffList.Add(TestItem);
-            TestItem.Admin = true;
-            TestItem.FirstName = "Aayush";
-            TestItem.LastName = "Moradiya";
-            TestItem.StaffDepartment = "Stock";
-            TestItem.StaffID = 4;
-            TestItem.DateOfBirth = DateTime.Now.Date;
-            mStaffList.Add(TestItem);
-        }
-        */
 
         [TestMethod]
         public void AddMethodOK()
@@ -179,6 +135,47 @@ namespace Testing5
             AllStaff.Delete();
             Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportsByFirstNameMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            FilteredStaff.ReportByFirstName("");
+            Assert.AreEqual(AllStaff.Count, FilteredStaff.Count);
+        }
+
+        [TestMethod]
+        public void ReportByFirstNameNoneFound()
+        {
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            FilteredStaff.ReportByFirstName("xxx xxx");
+            Assert.AreEqual(0, FilteredStaff.Count);
+        }
+
+        [TestMethod]
+        public void ReportByFirstNameTestDataFound()
+        {
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            Boolean OK = true;
+            FilteredStaff.ReportByFirstName("bob");
+            if(FilteredStaff.Count == 2)
+            {
+                if(FilteredStaff.StaffList[0].StaffID != 39)
+                {
+                    OK = false;
+                }
+                if(FilteredStaff.StaffList[1].StaffID != 40)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
 
 
