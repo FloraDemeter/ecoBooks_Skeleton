@@ -42,7 +42,15 @@
         </p>
         <p>
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 60px; top: 565px; position: absolute" Text="Edit" />
-            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 17px; top: 606px; position: absolute"></asp:Label>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 17px; top: 688px; position: absolute"></asp:Label>
+            <asp:Button ID="btnApply" runat="server" style="z-index: 1; left: 16px; top: 651px; position: absolute;" Text="Apply" OnClick="btnApply_Click" />
+        </p>
+        <p>
+            <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 5px; top: 623px; position: absolute" Text="Enter a First name "></asp:Label>
+            <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; top: 623px; left:130px; position: absolute"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" style="z-index: 1; left: 81px; top: 651px; position: absolute" Text="Clear" />
         </p>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 13px; top: 565px; position: absolute" Text="Add" />
     </form>

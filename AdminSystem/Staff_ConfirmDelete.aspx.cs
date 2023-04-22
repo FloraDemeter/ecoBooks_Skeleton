@@ -21,4 +21,12 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         Staff.Delete();
         Response.Redirect("Staff_List.aspx");
     }
+
+    protected void btnNo_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection Staff = new clsStaffCollection();
+        Staff.ThisStaff.Find(StaffID);
+        Staff.Delete();
+        Response.Redirect("Staff_List.aspx");
+    }
 }

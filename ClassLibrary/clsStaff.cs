@@ -91,11 +91,11 @@ namespace ClassLibrary
         {
 
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@StaffID", StaffID);
-            DB.Execute("sproc_tblStaff_FilterByStaffID");
+            DB.AddParameter("@StaffId", StaffID);
+            DB.Execute("sproc_tblStaff_FilterByStaffId");
             if (DB.Count == 1)
             {
-                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["staffID"]);
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
                 mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["staffDateOfBirth"]);
                 mAdmin = Convert.ToBoolean(DB.DataTable.Rows[0]["staffAdmin"]);
                 mFirstName = Convert.ToString(DB.DataTable.Rows[0]["staffFirstName"]);
