@@ -133,7 +133,12 @@ namespace Testing2
         string tstSupplierName = "CostCutter";
         string tstSupplierNo = "3";
         string tstSupplyDate = DateTime.Now.Date.ToString();
-        
+        private object tstSupplierAddress;
+        private object tstSupplierContactNo;
+
+        public string SupplierNo { get; private set; }
+        public string SupplyDate { get; private set; }
+
         [TestMethod]
         public void TestSupplierAddressFound()
         {
@@ -163,12 +168,104 @@ namespace Testing2
             Assert.IsTrue(OK);
 
         }
-       
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            Error = AnSupplier.Valid(tstSupplierName,tstSupplyDate,tstSupplierAddress,tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplyDateExtremeMin()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplyDate = DateTime.Today.AddYears(-100).ToString();
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplyDateMinLessOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplyDate = DateTime.Today.AddDays(-1).ToString();
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplyDateMin()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplyDate = DateTime.Today.ToString();
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void SupplyDateMinAddOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplyDate = DateTime.Today.AddDays(1).ToString();
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void SupplyDateExtremeMax()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplyDate = DateTime.Today.AddDays(1).ToString();
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void SupplyDateInvalidType()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplyDate = "not a Date";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplyDateInvalidType2()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplyDate = 1234.ToString();
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void SupplyDateInvalid3()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplyDate = 1234.78.ToString();
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void SupplierNameMinLessOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
 
 
 
 
-        
 
     }
 }
