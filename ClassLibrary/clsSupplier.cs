@@ -102,9 +102,32 @@ namespace ClassLibrary
                 return true;
             }
              else
-            {
+             {
                 return false;
+             }
+        }
+
+        public string Valid(string tstSupplierName, string tstSupplyDate, object tstSupplierAddress, object tstSupplierContactNo)
+        {
+              String Error = "";
+            //SupplyDate
+            try
+            {
+                DateTime DateTemp = Convert.ToDateTime(SupplyDate);
+                if(DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + " The SupplyDate cannot be passed";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + " The SUpplyDate Cannot be ion the future ";
+                }
             }
+            catch
+            {
+                Error = Error = " The Date was not a Valid Date";
+            }
+            return "";
         }
     }
 }

@@ -130,7 +130,7 @@ namespace ClassLibrary
                 Error = Error + "The date was not a valid date. ";
             }
             
-            //StockName
+           //StockName
             if (StockName.Length == 0)
             {
                 Error = Error + "The Stock Name may not be blank. ";
