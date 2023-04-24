@@ -17,17 +17,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             if (OrderID != -1)
             {
-                DisplayOrders();
+                DisplayOrder();
+            } else
+            {
+                txtOrderNo.ReadOnly = true;
             }
         }
     }
-    void DisplayOrders()
+    void DisplayOrder()
     {
-       /* clsOrderCollection Orders = new clsOrderCollection();
-        lstOrderList.DataSource = Orders.OrderList;
-        lstOrderList.DataValueField = "OrderID";
-        lstOrderList.DataTextField = "CustomerNo";
-        lstOrderList.DataBind();*/
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ThisOrder.Find(OrderID);
+        txtOrderNo.Text = Orders.ThisOrder.OrderID.ToString();
+        txtOrderDate.Text = Orders.ThisOrder.OrderDate.ToString();
+        txtCustomerNo.Text = Orders.ThisOrder.CustomerNo.ToString();
+        txtCustomerName.Text = Orders.ThisOrder.CustomerName;
+        txtStockNo.Text = Orders.ThisOrder.StockNo.ToString();
+        txtStockPrice.Text = Orders.ThisOrder.StockPrice.ToString();
+        chkOrderConf.Checked = Orders.ThisOrder.OrderConfirmed;
     }
 
 
@@ -44,7 +51,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = anOrder.Valid(orderDate, customerNo, customerName, stockNo, stockPrice);
         if (Error == "")
         {
-            anOrder.OrderID = OrderID;
             anOrder.OrderDate = Convert.ToDateTime(orderDate);
             anOrder.CustomerNo = Convert.ToInt32(customerNo);
             anOrder.CustomerName = customerName;
@@ -55,7 +61,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             if (OrderID == -1)
             {
                 OrderList.ThisOrder = anOrder;
-                OrderList.Add();
+                OrderList.Add(); 
             } else
             {
                 OrderList.ThisOrder.Find(OrderID);

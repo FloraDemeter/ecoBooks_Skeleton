@@ -186,10 +186,10 @@ namespace Testing3
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             Boolean OK = true;
-            FilteredOrders.ReportByOrderID(2);
+            FilteredOrders.ReportByOrderID(3);
             if (FilteredOrders.Count == 1)
             {
-                if (FilteredOrders.OrderList[0].OrderID != 2)
+                if (FilteredOrders.OrderList[0].OrderID != 3)
                 {
                     OK = false;
                 }

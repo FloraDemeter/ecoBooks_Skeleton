@@ -81,7 +81,7 @@ namespace Testing3
         {
             clsOrders anOrder = new clsOrders();
             Boolean Found = false;
-            Int32 OrderNo = 1;
+            Int32 OrderNo = 3;
             Found = anOrder.Find(OrderNo);
             Assert.IsTrue(Found);
         }

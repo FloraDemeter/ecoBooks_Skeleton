@@ -1,0 +1,59 @@
+﻿body {
+    background-color: lightgray;
+}
+
+header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    background-color: darkgray;
+    text-align:center;
+    padding: 5px;
+}
+
+.buttons {
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 12.5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    border-radius: 4px;
+}
+
+    .buttons:hover {
+        background-color: #555555;
+        color: white;
+    }
+
+.error {
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    font-size: 16px;
+}
+
+#list {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 0px;
+}
+
+#CustomerNoFilter {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+#OrderIDFilter {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+#OrderDetails {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+#Confirm {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}

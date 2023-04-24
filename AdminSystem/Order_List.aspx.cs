@@ -22,7 +22,7 @@ public partial class _1_List : System.Web.UI.Page
         clsOrderCollection Orders = new clsOrderCollection();
         lstOrderList.DataSource = Orders.OrderList;
         lstOrderList.DataValueField = "OrderID";
-        //lstOrderList.DataTextField = "CustomerNo";
+        lstOrderList.DataTextField = "CustomerNo";
         lstOrderList.DataBind();
     }
 
@@ -73,7 +73,6 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnClear_Click(object sender, EventArgs e)
     {
         clsOrderCollection Orders = new clsOrderCollection();
-        //Orders.ReportByCustomerNo("");
         txtFilterCustNo.Text = "";
         lstOrderList.DataSource = Orders.OrderList;
         lstOrderList.DataValueField = "OrderID";
@@ -81,4 +80,23 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataBind();
     }
 
+    protected void btnApplyOrder_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByOrderID(Convert.ToInt32(txtFilterOrderID.Text));
+        lstOrderList.DataSource = Orders.OrderList;
+        lstOrderList.DataValueField = "OrderID";
+        lstOrderList.DataTextField = "CustomerNo";
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClearOrder_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection Orders = new clsOrderCollection();
+        txtFilterOrderID.Text = "";
+        lstOrderList.DataSource = Orders.OrderList;
+        lstOrderList.DataValueField = "OrderID";
+        lstOrderList.DataTextField = "CustomerNo";
+        lstOrderList.DataBind();
+    }
 }

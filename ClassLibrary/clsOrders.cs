@@ -131,11 +131,11 @@ namespace ClassLibrary
                 DateTime DateTemp = Convert.ToDateTime(orderDate);
                 if (DateTemp < DateTime.Now.Date)
                 {
-                    Error = Error + "The OrderDate cannot be in the past. ";
+                    Error = Error + "The Order Date cannot be in the past. ";
                 }
                 if (DateTemp > DateTime.Now.Date)
                 {
-                    Error = Error + "The OrderDate cannot be in the future. ";
+                    Error = Error + "The Order Date cannot be in the future. ";
                 }
             }
             catch
@@ -156,7 +156,7 @@ namespace ClassLibrary
             }
             catch
             {
-                Error = Error + "The Customer No was not a valid date. ";
+                Error = Error + "The Customer No. was not a valid date. ";
             }
             //customerName
             if (customerName.Length == 0)
@@ -181,7 +181,7 @@ namespace ClassLibrary
             }
             catch
             {
-                Error = Error + "The Stock No was not a valid date. ";
+                Error = Error + "The Stock No. was not a valid date. ";
             }
             //stockPrice
             try
