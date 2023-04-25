@@ -35,7 +35,7 @@ namespace ClassLibrary
         }
         
         private Int32 mCustomerNo;
-        public int CustomerNo
+        public Int32 CustomerNo
         {
             get
             {
@@ -61,7 +61,7 @@ namespace ClassLibrary
         }
         
         private Int32 mStockNo;
-        public int StockNo
+        public Int32 StockNo
         {
             get
             {
@@ -197,11 +197,6 @@ namespace ClassLibrary
             }
 
             return Error;
-        }
-
-        public static implicit operator clsOrders(clsCustomers v)
-        {
-            throw new NotImplementedException();
         }
     }
 }
