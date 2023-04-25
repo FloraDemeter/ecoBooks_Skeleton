@@ -23,7 +23,7 @@
         <asp:CheckBox ID="chkUK" runat="server" style="z-index: 1; left: 12px; top: 194px; position: absolute; width: 74px" Text="         UK" />
         <asp:Label ID="IblError" runat="server" style="z-index: 1; left: 12px; top: 233px; position: absolute; height: 22px;" Text="[IblError]"></asp:Label>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 11px; top: 282px; position: absolute; height: 31px; width: 46px;" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 75px; top: 283px; position: absolute; width: 60px" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 75px; top: 283px; position: absolute; width: 60px" Text="Cancel" OnClick="btnCancel_Click" />
     </form>
 </body>
 </html>

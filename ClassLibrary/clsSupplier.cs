@@ -91,7 +91,7 @@ namespace ClassLibrary
             DB.Execute("sproc_tblSupplier_FillterByAupplierNo");
             if (DB.Count == 1)
             {
-                mSupplierNo = Convert.ToInt32(DB.DataTable.Rows[0]["Supplier"]);
+                mSupplierNo = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierNo"]);
                 mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
                 mSupplyDate = Convert.ToDateTime(DB.DataTable.Rows[0]["SupplyDate"]);
                 mUK = Convert.ToBoolean(DB.DataTable.Rows[0]["UK"]);
@@ -107,27 +107,66 @@ namespace ClassLibrary
              }
         }
 
-        public string Valid(string tstSupplierName, string tstSupplyDate, object tstSupplierAddress, object tstSupplierContactNo)
+        public string Valid(string tstSupplierName, string tstSupplyDate, string tstSupplierAddressOK, string tstSupplierContactNo)
         {
-              String Error = "";
-            //SupplyDate
+            String Error = " ";
+            // SupplyDate
             try
             {
                 DateTime DateTemp = Convert.ToDateTime(SupplyDate);
-                if(DateTemp < DateTime.Now.Date)
+                if (DateTemp < DateTime.Now.Date)
                 {
-                    Error = Error + " The SupplyDate cannot be passed";
+                    Error = Error + " the Supply date cannot be in the past";
                 }
                 if (DateTemp > DateTime.Now.Date)
                 {
-                    Error = Error + " The SUpplyDate Cannot be ion the future ";
+                    Error = Error + "The Supply Date cannot be in the future";
                 }
             }
             catch
             {
-                Error = Error = " The Date was not a Valid Date";
+                Error = Error + " The Supply Date was not valid";
             }
-            return "";
+
+
+            //SupplierName
+            if (SupplierName.Length == 0)
+            {
+                Error = Error + "The SupplierName may not be blank. ";
+            }
+            if (SupplierName.Length > 50)
+            {
+                Error = Error + "The SupplierName must be less than 50 characters. ";
+            }
+
+            //SupplierAddress
+            if (SupplierName.Length == 0)
+            {
+                Error = Error + "The SupplierAddress may not be blank. ";
+            }
+            if (SupplierName.Length > 50)
+            {
+                Error = Error + "The SupplierAddress must be less than 50 characters. ";
+            }
+
+            //SupplierContactNo
+
+            {
+                if (SupplierContactNo.Length == 0)
+                {
+                    Error = Error + "The Stock Quantity may not be blank. ";
+                }
+                if (Convert.ToInt32(SupplierContactNo.Length) > 10)
+                {
+                    Error = Error + "The Stock Quantity cannot be less than 1. ";
+                }
+            }
+
+
+
+            return Error;
+
+           
         }
     }
 }
