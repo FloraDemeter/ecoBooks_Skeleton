@@ -323,7 +323,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierContactNo = "";
+            string SupplierContactNo = "";u
             Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -351,8 +351,8 @@ namespace Testing2
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
             string SupplierContactNo = "07776556638";
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
-            Assert.AreEqual(Error, "");
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tsjzsnxstSupplierAddress, SupplierContactNo);
+            Assert.AreEqual(Error, """);
         }
         [TestMethod]
         public void SupplierContactNoMax()
