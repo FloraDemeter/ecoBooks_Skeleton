@@ -8,42 +8,72 @@ namespace Testing4
     public class tstCustomer
     {
         [TestMethod]
-        public void TestMethod1()
+        public void InstanceOK()
         {
-            clsCustomers anCustomer = new clsCustomers();
-            Assert.IsNotNull(anCustomer);
+            clsCustomer ACustomer = new clsCustomer();
+            Assert.IsNotNull(ACustomer);
         }
+
         [TestMethod]
-        public void OrderIDPropertyOk()
+        public void CustomerIDPropertyOk()
         {
-            clsCustomers anCustomer = new clsCustomers();
+            clsCustomer ACustomer = new clsCustomer();
             Int32 TestData = 1;
-            anCustomer.CustomerID = TestData;
-            Assert.AreEqual(anCustomer.CustomerID, TestData);
+            ACustomer.CustomerID = TestData;
+            Assert.AreEqual(ACustomer.CustomerID, TestData);
         }
+
         [TestMethod]
-        public void CustomerNameOk()
+        public void CustomerFullNamePropertyOK()
         {
-            clsCustomers aCustomer = new clsCustomers();
+            clsCustomer ACustomer = new clsCustomer();
             string TestData = "Some Name";
-            aCustomer.CustomerName = TestData;
-            Assert.AreEqual(aCustomer.CustomerName, TestData);
+            ACustomer.CustomerFullName = TestData;
+            Assert.AreEqual(ACustomer.CustomerFullName, TestData);
         }
+
         [TestMethod]
         public void CustomerDateOfBirthPropertyOk()
         {
-            clsCustomers anCustomer = new clsCustomers();
+            clsCustomer ACustomer = new clsCustomer();
             DateTime TestData = DateTime.Now.Date;
-            anCustomer.CustomerDateOfBirth = TestData;
-            Assert.AreEqual(anCustomer.CustomerDateOfBirth, TestData);
+            ACustomer.CustomerDateOfBirth = TestData;
+            Assert.AreEqual(ACustomer.CustomerDateOfBirth, TestData);
+        }
+
+        [TestMethod]
+        public void CustomerGenderPropertyOK()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string TestData = "Male";
+            ACustomer.CustomerGender = TestData;
+            Assert.AreEqual(ACustomer.CustomerGender, TestData);
         }
         [TestMethod]
-        public void OrderConfirmedPropertyOk()
+        public void CustomerAddressPropertyOK()
         {
-            clsOrders anOrder = new clsOrders();
-            Boolean TestData = true;
-            anOrder.OrderConfirmed = TestData;
-            Assert.AreEqual(anOrder.OrderConfirmed, TestData);
+            clsCustomer ACustomer = new clsCustomer();
+            string TestData = "1 Dobson Close, Wigson, LE18 3UQ, Leicester, UK";
+            ACustomer.CustomerAddress = TestData;
+            Assert.AreEqual(ACustomer.CustomerAddress, TestData);
+        }
+
+        [TestMethod]
+        public void CustomerEmailAddressPropertyOK()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string TestData = "shadwman.kareem@gmil.com";
+            ACustomer.CustomerEmailAddress = TestData;
+            Assert.AreEqual(ACustomer.CustomerEmailAddress, TestData);
+        }
+
+        [TestMethod]
+        public void CustomerLoyaltyNumberPropertyOk()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Double TestData = 4554455445;
+            ACustomer.CustomerLoyaltyNumber = TestData;
+            Assert.AreEqual(ACustomer.CustomerLoyaltyNumber, TestData);
         }
     }
 }
