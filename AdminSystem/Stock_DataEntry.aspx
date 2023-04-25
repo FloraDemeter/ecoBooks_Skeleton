@@ -9,19 +9,20 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="StockNo" runat="server" Text="Stock Number" width="96px"></asp:Label>
+            <asp:Label ID="lblStockNo" runat="server" Text="Stock Number" width="96px"></asp:Label>
             <asp:TextBox ID="txtStockNo" runat="server"></asp:TextBox>
+        &nbsp;<asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </div>
-        <asp:Label ID="StockName" runat="server" Text="Stock Name" width="96px"></asp:Label>
+        <asp:Label ID="lblStockName" runat="server" Text="Stock Name" width="96px"></asp:Label>
         <asp:TextBox ID="txtStockName" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="Description" runat="server" Text="Description" width="96px"></asp:Label>
+        <asp:Label ID="lblDescription" runat="server" Text="Description" width="96px"></asp:Label>
         <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="StockQuantity" runat="server" Text="Stock Quantity" width="96px"></asp:Label>
+        <asp:Label ID="lblStockQuantity" runat="server" Text="Stock Quantity" width="96px"></asp:Label>
         <asp:TextBox ID="txtStockQuantity" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="ProcessedDate" runat="server" Text="Processed Date"></asp:Label>
+        <asp:Label ID="lblProcessedDate" runat="server" Text="Processed Date"></asp:Label>
         <asp:TextBox ID="txtProcessedDate" runat="server"></asp:TextBox>
         <br />
         <br />
