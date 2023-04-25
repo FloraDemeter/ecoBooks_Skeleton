@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsCustomers.cs" />
-    <Compile Include="clsSupplierConnection.cs" />
+    <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsOrderCollection.cs" />
     <Compile Include="clsOrders.cs" />
     <Compile Include="clsStaff.cs" />
