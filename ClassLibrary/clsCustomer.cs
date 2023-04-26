@@ -6,44 +6,134 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    class Class1
-    {
-    }
-
-    public class ACustomer : ACustomerBase
-    {
-        public class CustomerID
-        {
-        }
-    }
-
     public class clsCustomer
     {
-        public int CustomerID;
-        public DateTime CustomerDateOfBirth;
-
-        public string CustomerName { get; set; }
-        public string CustomerFullName { get; set; }
-        public string CustomerGender { get; set; }
-        public string CustomerAddress { get; set; }
-        public string CustomerEmailAddress { get; set; }
-        public double CustomerLoyaltyNumber { get; set; }
-
-        private int customerID;
-
-        public int GetCustomerID()
+        public clsCustomer()
         {
-            return customerID;
         }
 
-        public void SetCustomerID(int value)
+        private Int32 mCustomerID;
+        public Int32 CustomerID
         {
-            customerID = value;
+            get
+            {
+                return mCustomerID;
+            }
+            set
+            {
+                mCustomerID = value;
+            }
         }
 
-        public string Valid(string customerID, string customerFullName, string customerDateOfBirth, string customerGender, string customerFullAddress, string customerEmailAddress)
+        private DateTime mCustomerDateOfBirth;
+        public DateTime CustomerDateOfBirth
         {
-            throw new NotImplementedException();
+            get
+            {
+                return mCustomerDateOfBirth;
+            }
+            set
+            {
+                mCustomerDateOfBirth = value;
+            }
         }
+
+
+
+        private string mCustomerFullName;
+
+        public string mGender { get; private set; }
+
+        public string CustomerFullName
+        {
+            get
+            {
+                return mCustomerFullName;
+            }
+            set
+            {
+                mCustomerFullName = value;
+            }
+        }
+
+        private String mCustomerGender;
+        public String CustomerGender
+        {
+            get
+            {
+                return mCustomerGender;
+            }
+            set
+            {
+                mCustomerGender = value;
+            }
+        }
+        private String mCustomerAddress;
+        public String CustomerAddress
+        {
+            get
+            {
+                return mCustomerAddress;
+            }
+            set
+            {
+                mCustomerAddress = value;
+            }
+        }
+
+
+        private double mCustomerLoyaltyNumber;
+        public double CustomerLoyaltyNumber
+        {
+            get
+            {
+                return mCustomerLoyaltyNumber;
+            }
+            set
+            {
+                mCustomerLoyaltyNumber = value;
+            }
+        }
+
+        private String mCustomerEmailAddress;
+        public String CustomerEmailAddress
+        {
+            get
+            {
+                return mCustomerEmailAddress;
+            }
+            set
+            {
+                mCustomerEmailAddress = value;
+            }
+        }
+        public bool Find(int OrderNo)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", CustomerID);
+            DB.Execute("sproc_tblOrder_FilterByCustomerID");
+            if (DB.Count == 1)
+            {
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomeID"]);
+                mCustomerDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0][" CustomerDateOfBirth"]);
+                mCustomerFullName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFullName"]);
+                mGender = Convert.ToString(DB.DataTable.Rows[0]["Gender"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                mCustomerEmailAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmailAddress"]);
+
+                mCustomerLoyaltyNumber = Convert.ToDouble(DB.DataTable.Rows[0][" CustomerLoyaltyNumber"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        public string Valid(string CustomerID, string CustomerFullName, string CustomerDateOfBirth, string CustomerAddress, string CustomerEmailAddress, string CustomerLoyaltyNumber)
+        {
+
+    }
     }
 }
+
