@@ -15,7 +15,6 @@
                 <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID" width="150px"></asp:Label>
                 <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:CheckBox ID="chkCorrectInformtion" runat="server" Text="I Have Given Correct Information" />
                 <br />
                 <asp:Label ID="lblCustomerFullName" runat="server" Text="Full Name" width="150px"></asp:Label>
                 <asp:TextBox ID="txtCustomerFullName" runat="server"></asp:TextBox>

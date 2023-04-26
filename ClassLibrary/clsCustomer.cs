@@ -8,9 +8,6 @@ namespace ClassLibrary
 {
     public class clsCustomer
     {
-        public clsCustomer()
-        {
-        }
 
         private Int32 mCustomerID;
         public Int32 CustomerID
@@ -42,7 +39,7 @@ namespace ClassLibrary
 
         private string mCustomerFullName;
 
-        public string mGender { get; private set; }
+        public string mGender { get;  set; }
 
         public string CustomerFullName
         {
@@ -107,28 +104,9 @@ namespace ClassLibrary
                 mCustomerEmailAddress = value;
             }
         }
-        public bool Find(int OrderNo)
+        public bool Find(int CustomerID)
         {
-            clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@CustomerID", CustomerID);
-            DB.Execute("sproc_tblOrder_FilterByCustomerID");
-            if (DB.Count == 1)
-            {
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomeID"]);
-                mCustomerDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0][" CustomerDateOfBirth"]);
-                mCustomerFullName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFullName"]);
-                mGender = Convert.ToString(DB.DataTable.Rows[0]["Gender"]);
-                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
-                mCustomerEmailAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmailAddress"]);
-
-                mCustomerLoyaltyNumber = Convert.ToDouble(DB.DataTable.Rows[0][" CustomerLoyaltyNumber"]);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            return true;
         }
         public string Valid( string CustomerFullName, string CustomerDateOfBirth, string CustomerAddress, string CustomerEmailAddress, string CustomerLoyaltyNumber, string CustomerGender)
         {
