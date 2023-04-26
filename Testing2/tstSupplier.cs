@@ -177,12 +177,228 @@ namespace Testing2
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
+        public void SupplierNameMinLessOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "";
+            Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierNameMin()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "";
+            Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierNameMinAddOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "01";
+            Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierNameMaxLessOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "0123456789012345678901234567890123456789";
+            Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierNameMax()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "01234567890123456789012345678901234567890";
+            Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierNameMaxAddOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "0123456789012345678901234567890123456789";
+            Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierNameMid()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "0123456789901234567891234567890123456789";
+            Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierNameExtremeMax()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "012345678901234567890123456789012345678901234567890012345678901234567890123456789012345678901234567890012345678901234567890123456789012345678901234567890";
+            Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierAddressMinLessOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierAddress = "";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierAddressMin()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierAddress = "";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierAddressMinAddOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierAddress = "01";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierAddressMaxLessOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierAddress = "01234567890123445667890123456778901234567890123456789";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierAddressMax()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierAddress = "01234567890123456789012345678901234567890123456789";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierAddressMaxAddOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierAddress = "01234567890123456789012345678901234567890123456789";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierAddressMid()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierAddress = "012345678901234567890123456789";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierAddressExtremeMax()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierAddress = "012345678901234567890123456789012345678901234567890012345678901234567890123456789012345678901234567890012345678901234567890123456789012345678901234567890";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierContactNoMinLessOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierContactNo = ""; 
+             Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierContactNoMin()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierContactNo = "";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierContactNoMinAddOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierContactNo = "01";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierContactNoMaxLessOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierContactNo = "07776556638";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierContactNoMax()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierContactNo = "07776556638";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierContactNoMaxAddOne()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierContactNo = "07776556638";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierContactNoMid()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierContactNo = "07776556638";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierContactNoExtremeMax()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierContactNo = "077765566380777655663807776556638077765566380777655663807776556638077765566380777655663807776556638";
+            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
         public void SupplyDateExtremeMin()
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
             string SupplyDate = DateTime.Today.AddYears(-100).ToString();
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Error = AnSupplier.Valid(tstSupplierName, SupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -191,7 +407,7 @@ namespace Testing2
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
             string SupplyDate = DateTime.Today.AddDays(-1).ToString();
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Error = AnSupplier.Valid(tstSupplierName, SupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -200,7 +416,7 @@ namespace Testing2
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
             string SupplyDate = DateTime.Today.ToString();
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Error = AnSupplier.Valid(tstSupplierName, SupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -210,7 +426,7 @@ namespace Testing2
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
             string SupplyDate = DateTime.Today.AddDays(1).ToString();
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Error = AnSupplier.Valid(tstSupplierName, SupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -220,7 +436,7 @@ namespace Testing2
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
             string SupplyDate = DateTime.Today.AddDays(1).ToString();
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Error = AnSupplier.Valid(tstSupplierName, SupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -230,7 +446,7 @@ namespace Testing2
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
             string SupplyDate = "not a Date";
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Error = AnSupplier.Valid(tstSupplierName, SupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -239,7 +455,7 @@ namespace Testing2
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
             string SupplyDate = 1234.ToString();
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Error = AnSupplier.Valid(tstSupplierName, SupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -249,19 +465,13 @@ namespace Testing2
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
             string SupplyDate = 1234.78.ToString();
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
+            Error = AnSupplier.Valid(tstSupplierName, SupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreNotEqual(Error, "");
 
         }
-        [TestMethod]
-        public void SupplierNameMinLessOne()
-        {
-            clsSupplier AnSupplier = new clsSupplier();
-            String Error = "";
-            string SupplierName = "";
-            Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
-            Assert.AreEqual(Error, "");
-        }
+
+
+
 
 
 
