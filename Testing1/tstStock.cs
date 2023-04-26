@@ -437,9 +437,6 @@ namespace Testing1
             Error = aStock.Valid(tstStockName, tstDescription, StockQuantity, tstProcessedDate);
             Assert.AreNotEqual(Error, "");
         }
-
-
-
     }
-        }
+}
 

@@ -12,12 +12,14 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         clsStock aStock = new clsStock();
         aStock = (clsStock)Session["aStock"];
+        Response.Write(aStock.StockNo + "<br />");
         Response.Write(aStock.StockName + "<br />");
         Response.Write(aStock.Description + "<br />");
         Response.Write(aStock.StockQuantity + "<br />");
         Response.Write(aStock.ProcessedDate + "<br />");
         Response.Write(aStock.Available + "<br />");
-        
-        
-    }
-}
+
+
+     }
+ }
+    
