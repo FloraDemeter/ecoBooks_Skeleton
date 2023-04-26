@@ -30,7 +30,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerGender.Text = ACustomer.CustomerGender.ToString();
             txtCustomerAddress.Text = ACustomer.CustomerAddress.ToString();
             txtCustomerEmailAddress.Text = ACustomer.CustomerEmailAddress.ToString();
-            chkCorrectInformtion.Checked = ACustomer.IHaveGivenCorrectInformation;
+
         }
    }
 
@@ -49,7 +49,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string CustomerGender = txtCustomerGender.Text;
         string CustomerFullAddress = txtCustomerAddress.Text;
         string CustomerEmailAddress = txtCustomerEmailAddress.Text;
-        string IHaveGivenCorrectInformation = Convert.ToString(chkCorrectInformtion);
+
         String Error = "";
         Error = ACustomer.Valid(CustomerID, CustomerFullName, CustomerDateOfBirth, CustomerGender, CustomerFullAddress, CustomerEmailAddress);
         if (Error == "")
