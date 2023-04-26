@@ -19,8 +19,8 @@ namespace Testing3
         {
             clsOrders anOrder = new clsOrders();
             Int32 TestData = 1;
-            anOrder.OrderID = TestData;
-            Assert.AreEqual(anOrder.OrderID, TestData);
+            anOrder.CustomerID = TestData;
+            Assert.AreEqual(anOrder.CustomerID, TestData);
         }
 
         [TestMethod]
@@ -93,7 +93,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 OrderNo = 6;
             Found = anOrder.Find(OrderNo);
-            if (anOrder.OrderID != 6)
+            if (anOrder.CustomerID != 6)
             {
                 OK = false;
             }

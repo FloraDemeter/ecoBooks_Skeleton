@@ -8,209 +8,153 @@ namespace ClassLibrary
 {
     public class clsCustomer
     {
-        public clsCustomer()
+        private Int32 mCustomerID;
+        public int CustomerID
         {
+            get { return mCustomerID; }
+            set { mCustomerID = value; }
         }
 
-        private Int32 mCustomerID;
-        public Int32 CustomerID
+        private String mCustomerFullName;
+        public string CustomerFullName
         {
-            get
-            {
-                return mCustomerID;
-            }
-            set
-            {
-                mCustomerID = value;
-            }
+            get { return mCustomerFullName; }
+            set { mCustomerFullName = value; }
         }
 
         private DateTime mCustomerDateOfBirth;
         public DateTime CustomerDateOfBirth
         {
-            get
-            {
-                return mCustomerDateOfBirth;
-            }
-            set
-            {
-                mCustomerDateOfBirth = value;
-            }
-        }
-
-
-
-        private string mCustomerFullName;
-
-        public string mGender { get; private set; }
-
-        public string CustomerFullName
-        {
-            get
-            {
-                return mCustomerFullName;
-            }
-            set
-            {
-                mCustomerFullName = value;
-            }
+            get { return mCustomerDateOfBirth; }
+            set { mCustomerDateOfBirth = value; }
         }
 
         private String mCustomerGender;
-        public String CustomerGender
+        public string CustomerGender
         {
-            get
-            {
-                return mCustomerGender;
-            }
-            set
-            {
-                mCustomerGender = value;
-            }
+            get { return mCustomerGender; }
+            set { mCustomerGender = value; }
         }
+
         private String mCustomerAddress;
-        public String CustomerAddress
+        public string CustomerAddress
         {
-            get
-            {
-                return mCustomerAddress;
-            }
-            set
-            {
-                mCustomerAddress = value;
-            }
-        }
-
-
-        private double mCustomerLoyaltyNumber;
-        public double CustomerLoyaltyNumber
-        {
-            get
-            {
-                return mCustomerLoyaltyNumber;
-            }
-            set
-            {
-                mCustomerLoyaltyNumber = value;
-            }
+            get { return mCustomerAddress; }
+            set { mCustomerAddress = value; }
         }
 
         private String mCustomerEmailAddress;
-        public String CustomerEmailAddress
+        public string CustomerEmailAddress
         {
-            get
-            {
-                return mCustomerEmailAddress;
-            }
-            set
-            {
-                mCustomerEmailAddress = value;
-            }
+            get { return mCustomerEmailAddress; }
+            set { mCustomerEmailAddress = value; }
         }
-        public bool Find(int OrderNo)
-        {
-            clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@CustomerID", CustomerID);
-            DB.Execute("sproc_tblOrder_FilterByCustomerID");
-            if (DB.Count == 1)
-            {
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomeID"]);
-                mCustomerDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0][" CustomerDateOfBirth"]);
-                mCustomerFullName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFullName"]);
-                mGender = Convert.ToString(DB.DataTable.Rows[0]["Gender"]);
-                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
-                mCustomerEmailAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmailAddress"]);
 
-                mCustomerLoyaltyNumber = Convert.ToDouble(DB.DataTable.Rows[0][" CustomerLoyaltyNumber"]);
+
+        private Boolean mCustomerLoyalty;
+        public bool CustomerLoyalty
+        {
+            get { return mCustomerLoyalty; }
+            set { mCustomerLoyalty = value; }
+        }
+
+        public bool Find(int customerID)
+        {
+            //create an instance of the data conneection
+            clsDataConnection db = new clsDataConnection();
+            //add the parameter for the CustomerID to search for
+            db.AddParameter("@CustomerID", customerID);
+            //execite the stored procedure
+            db.Execute("sproc_tblCustomer_FilterByCustomerID");
+            //if one record is found (there should be either one or zero!)
+            if (db.Count == 1)
+            {
+                //saved data fromt he database to data members
+                mCustomerID = Convert.ToInt32(db.DataTable.Rows[0]["CustomerID"]);
+                mCustomerFullName = Convert.ToString(db.DataTable.Rows[0]["CustomerFullName"]);
+                mCustomerDateOfBirth = Convert.ToDateTime(db.DataTable.Rows[0]["CustomerDateOfBirth"]);
+                mCustomerGender = Convert.ToString(db.DataTable.Rows[0]["CustomerGender"]);
+                mCustomerAddress = Convert.ToString(db.DataTable.Rows[0]["CustomerAddress"]);
+                mCustomerEmailAddress = Convert.ToString(db.DataTable.Rows[0]["CustomerEmailAddress"]);
+                mCustomerLoyalty = Convert.ToBoolean(db.DataTable.Rows[0]["CustomerLoyalty"]);
+                //return that everything worked
                 return true;
             }
-            else
-            {
-                return false;
-            }
-
+            //if no record was found
+            else { return false; }//indicates a issue
         }
-        public string Valid( string CustomerFullName, string CustomerDateOfBirth, string CustomerAddress, string CustomerEmailAddress, string CustomerLoyaltyNumber, string CustomerGender)
+
+        public string Valid(string CustomerFullName, string CustomerGender, string CustomerAddress, string CustomerEmailAddress)
         {
+            //create a string variable to store the error
             String Error = "";
-
-            try
-                //DateOfBirth
-            {
-                DateTime DateTemp = Convert.ToDateTime(CustomerDateOfBirth);
-                if (DateTemp < DateTime.Now.Date)
-                {
-                    Error = Error + "The CustomerDateOfBirth cannot be in the past. ";
-                }
-                if (DateTemp > DateTime.Now.Date)
-                {
-                    Error = Error + "The CustomerDateOfBirth cannot be in the future. ";
-                }
-            }
-            catch
-            {
-                Error = Error + "The date was not a valid date. ";
-            }
-
-
-            //FullName
+            DateTime DateTemp;
+            //if the CustomerFullName is blank
             if (CustomerFullName.Length == 0)
             {
-                Error = Error + "The CustomerFullName may not be blank. ";
+                //record error
+                Error = Error + "The Customer Full Name may not be blank : ";
             }
+            //if the Customer Full Name is greater than 50 characters
             if (CustomerFullName.Length > 50)
             {
-                Error = Error + "The CustomerFullName must be less than 50 characters. ";
+                //record error
+                Error = Error + "The Customer Full Name must be less than 50 characters : ";
             }
-
-            //Address
+            //if the CustomerAddress is blank
             if (CustomerAddress.Length == 0)
             {
-                Error = Error + "The CustomerAddress may not be blank. ";
+                Error = Error + "The Customer Address may not the blank.";
+
             }
             if (CustomerAddress.Length > 50)
             {
-                Error = Error + "The CustomerAddress must be less than 50 characters. ";
+                Error = Error + "The CustomerAddress  must be less than 50 characters.";
             }
-
-            //EmailAddress
-            if (CustomerEmailAddress.Length == 0)
-            {
-                Error = Error + "The CustomerEmailAddress may not be blank. ";
-            }
-            if (CustomerEmailAddress.Length > 50)
-            {
-                Error = Error + "The CustomerEmailAddress must be less than 50 characters. ";
-            }
-
-
-            //Gender
-
+            //if the CustomerGender is blank  not showing in the browser
             if (CustomerGender.Length == 0)
             {
-                Error = Error + "The CustomerGender may not be blank. ";
+                //record error
+                Error = Error + "The Customer Gender may not be blank : ";
             }
-            if (CustomerGender.Length > 50)
+            //if the CustomerGender is greater than 10 characters
+            if (CustomerGender.Length > 10)
+
+                //if the CustomerEmailAddress is blank
+                if (CustomerEmailAddress.Length == 0)
             {
-                Error = Error + "The Gender must be less than 10 characters. ";
+                //record error
+                Error = Error + "The Customer Email Address may not be blank : ";
             }
-
-
-            //LoyaltyNumber
+            //if the Customer Email Address is greater than 50 characters
+            if (CustomerEmailAddress.Length > 50)
+            {
+                //record error
+                Error = Error + "The Customer Gender must be less than 50 characters : ";
+            }
             try
             {
-                if (Convert.ToDouble(CustomerLoyaltyNumber) < 0.00)
+                //copy the DateofBirth value to the DateTemp varaible
+                DateTemp = Convert.ToDateTime(CustomerDateOfBirth);
+                if (DateTemp < DateTime.Now.Date.AddYears(-100))
                 {
-                    Error = Error + "The Stock Price cannot be less than 0. ";
+                    //record error
+                    Error = Error + "The date cannot be less than 100 years in the past ";
                 }
+                if (DateTemp > DateTime.Now.Date.AddYears(-16))
+                {
+                    //record error
+                    Error = Error + "The CustomerDateOfBirth must be over 16 years in the past ";
+                }
+
+
             }
             catch
-            {
-                Error = Error + "Customer Loyalty Number was not a valid data type. ";
+            { //return any error messages
+                Error = Error + "The date was not a valid date ";
             }
-
             return Error;
-        }
 
+        }
     }
-    }
+}
