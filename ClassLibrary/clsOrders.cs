@@ -9,7 +9,7 @@ namespace ClassLibrary
         }
 
         private Int32 mOrderNo;
-        public Int32 CustomerID 
+        public Int32 OrderNo 
         {
             get 
             {
