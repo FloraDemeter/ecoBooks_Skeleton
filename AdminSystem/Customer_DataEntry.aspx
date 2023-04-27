@@ -22,10 +22,8 @@
                 <asp:Label ID="lblCustomerDateOfBirth" runat="server" Text="Date Of Birth" width="150px"></asp:Label>
                 <asp:TextBox ID="txtCustomerDateOfBirth" runat="server"></asp:TextBox>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btnSave" runat="server" OnClick="btnFind_Click" Text="Save" Height="29px" Width="38px" />
+                <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" Height="29px" Width="38px" />
                 <br />
-                <asp:Label ID="lblCustomerGender" runat="server" Text="Gender" width="150px"></asp:Label>
-                <asp:TextBox ID="txtCustomerGender" runat="server"></asp:TextBox>
                 <br />
                 <asp:Label ID="lblCustomerAddress" runat="server" Text="Full Address" width="150px"></asp:Label>
                 <asp:TextBox ID="txtCustomerAddress" runat="server"></asp:TextBox>

@@ -27,7 +27,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerID.Text = ACustomer.CustomerID.ToString();
             txtCustomerFullName.Text = ACustomer.CustomerFullName.ToString();
             txtCustomerDateOfBirth.Text = ACustomer.CustomerDateOfBirth.ToString();
-            txtCustomerGender.Text = ACustomer.CustomerGender.ToString();
             txtCustomerAddress.Text = ACustomer.CustomerAddress.ToString();
             txtCustomerEmailAddress.Text = ACustomer.CustomerEmailAddress.ToString();
 
@@ -46,19 +45,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string CustomerID = txtCustomerID.Text;
         string CustomerFullName = txtCustomerFullName.Text;
         string CustomerDateOfBirth = txtCustomerDateOfBirth.Text;
-        string CustomerGender = txtCustomerGender.Text;
         string CustomerFullAddress = txtCustomerAddress.Text;
         string CustomerEmailAddress = txtCustomerEmailAddress.Text;
 
         String Error = "";
-        Error = ACustomer.Valid(CustomerID, CustomerFullName, CustomerDateOfBirth, CustomerGender, CustomerFullAddress, CustomerEmailAddress);
+        Error = ACustomer.Valid(CustomerFullName, CustomerFullAddress, CustomerEmailAddress, CustomerDateOfBirth);
         if (Error == "")
 
             {
-                ACustomer.CustomerID = Convert.ToInt32(CustomerID);
                 ACustomer.CustomerFullName = Convert.ToString(CustomerFullName);
                 ACustomer.CustomerDateOfBirth = Convert.ToDateTime(CustomerDateOfBirth);
-                ACustomer.CustomerGender = CustomerGender;
                 ACustomer.CustomerAddress = CustomerFullAddress;
                 ACustomer.CustomerEmailAddress = CustomerEmailAddress;
               }
