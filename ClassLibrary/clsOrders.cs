@@ -9,9 +9,9 @@ namespace ClassLibrary
         }
 
         private Int32 mOrderNo;
-        public Int32 OrderNo 
+        public Int32 OrderID
         {
-            get 
+            get
             {
                 return mOrderNo;
             }
@@ -20,7 +20,7 @@ namespace ClassLibrary
                 mOrderNo = value;
             }
         }
-       
+
         private DateTime mOrderDate;
         public DateTime OrderDate
         {
@@ -33,7 +33,7 @@ namespace ClassLibrary
                 mOrderDate = value;
             }
         }
-        
+
         private Int32 mCustomerNo;
         public Int32 CustomerNo
         {
@@ -46,7 +46,7 @@ namespace ClassLibrary
                 mCustomerNo = value;
             }
         }
-        
+
         private string mCustomerName;
         public string CustomerName
         {
@@ -59,7 +59,7 @@ namespace ClassLibrary
                 mCustomerName = value;
             }
         }
-        
+
         private Int32 mStockNo;
         public Int32 StockNo
         {
@@ -72,7 +72,7 @@ namespace ClassLibrary
                 mStockNo = value;
             }
         }
-        
+
         private double mStockPrice;
         public double StockPrice
         {
@@ -85,7 +85,7 @@ namespace ClassLibrary
                 mStockPrice = value;
             }
         }
-        
+
         private bool mOrderConfirmed;
         public bool OrderConfirmed
         {
