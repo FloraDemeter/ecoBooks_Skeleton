@@ -5,7 +5,7 @@ namespace ClassLibrary
 {
     public class clsOrderCollection
     {
-       
+
         List<clsOrders> mOrderList = new List<clsOrders>();
         clsOrders mThisOrder = new clsOrders();
         public clsOrderCollection()
@@ -14,8 +14,8 @@ namespace ClassLibrary
             DB.Execute("sproc_tblOrder_SelectAll");
             PopulateArray(DB);
         }
-        public List<clsOrders> OrderList 
-        { 
+        public List<clsOrders> OrderList
+        {
             get
             {
                 return mOrderList;
@@ -34,18 +34,18 @@ namespace ClassLibrary
             set
             {
 
-            } 
+            }
         }
         public clsOrders ThisOrder
         {
-            get 
+            get
             {
                 return mThisOrder;
             }
-            set 
+            set
             {
                 mThisOrder = value;
-            } 
+            }
         }
 
         public int Add()
@@ -63,7 +63,7 @@ namespace ClassLibrary
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@OrderID", mThisOrder.OrderNo);
+            DB.AddParameter("@OrderID", mThisOrder.OrderID);
             DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
             DB.AddParameter("@CustomerNo", mThisOrder.CustomerNo);
             DB.AddParameter("@CustomerName", mThisOrder.CustomerName);
@@ -76,7 +76,7 @@ namespace ClassLibrary
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@OrderID", mThisOrder.OrderNo);
+            DB.AddParameter("@OrderID", mThisOrder.OrderID);
             DB.Execute("sproc_tblOrder_Delete");
         }
 
@@ -105,7 +105,7 @@ namespace ClassLibrary
             while (Index < RecordCount)
             {
                 clsOrders AnOrder = new clsOrders();
-                AnOrder.OrderNo = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
                 AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
                 AnOrder.CustomerNo = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerNo"]);
                 AnOrder.CustomerName = Convert.ToString(DB.DataTable.Rows[Index]["CustomerName"]);
