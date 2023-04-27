@@ -63,7 +63,7 @@ namespace ClassLibrary
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@OrderID", mThisOrder.CustomerID);
+            DB.AddParameter("@OrderID", mThisOrder.OrderNo);
             DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
             DB.AddParameter("@CustomerNo", mThisOrder.CustomerNo);
             DB.AddParameter("@CustomerName", mThisOrder.CustomerName);
@@ -76,7 +76,7 @@ namespace ClassLibrary
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@OrderID", mThisOrder.CustomerID);
+            DB.AddParameter("@OrderID", mThisOrder.OrderNo);
             DB.Execute("sproc_tblOrder_Delete");
         }
 
@@ -105,7 +105,7 @@ namespace ClassLibrary
             while (Index < RecordCount)
             {
                 clsOrders AnOrder = new clsOrders();
-                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrder.OrderNo = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
                 AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
                 AnOrder.CustomerNo = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerNo"]);
                 AnOrder.CustomerName = Convert.ToString(DB.DataTable.Rows[Index]["CustomerName"]);

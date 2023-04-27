@@ -20,7 +20,7 @@ namespace Testing3
             clsOrderCollection AllOrders = new clsOrderCollection();
             List<clsOrders> TestList = new List<clsOrders>();
             clsOrders TestItem = new clsOrders();
-            TestItem.CustomerID = 1;
+            TestItem.OrderNo = 1;
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.CustomerNo = 1;
             TestItem.CustomerName = "John Smith";
@@ -36,7 +36,7 @@ namespace Testing3
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrders TestItem = new clsOrders();
-            TestItem.CustomerID = 1;
+            TestItem.OrderNo = 1;
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.CustomerNo = 1;
             TestItem.CustomerName = "John Smith";
@@ -52,7 +52,7 @@ namespace Testing3
             clsOrderCollection AllOrders = new clsOrderCollection();
             List<clsOrders> TestList = new List<clsOrders>();
             clsOrders TestItem = new clsOrders();
-            TestItem.CustomerID = 1;
+            TestItem.OrderNo = 1;
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.CustomerNo = 1;
             TestItem.CustomerName = "John Smith";
@@ -69,7 +69,7 @@ namespace Testing3
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrders TestItem = new clsOrders();
             Int32 PrimaryKey = 0;
-            TestItem.CustomerID = 1;
+            TestItem.OrderNo = 1;
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.CustomerNo = 1;
             TestItem.CustomerName = "John Smith";
@@ -78,7 +78,7 @@ namespace Testing3
             TestItem.OrderConfirmed = true;
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
-            TestItem.CustomerID = PrimaryKey;
+            TestItem.OrderNo = PrimaryKey;
             AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
@@ -96,7 +96,7 @@ namespace Testing3
             TestItem.OrderConfirmed = true;
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
-            TestItem.CustomerID = PrimaryKey;
+            TestItem.OrderNo = PrimaryKey;
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.CustomerNo = 1234;
             TestItem.CustomerName = "AnotherJohn Smith";
@@ -122,7 +122,7 @@ namespace Testing3
             TestItem.OrderConfirmed = true;
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
-            TestItem.CustomerID = PrimaryKey;
+            TestItem.OrderNo = PrimaryKey;
             AllOrders.ThisOrder.Find(PrimaryKey);
             AllOrders.Delete();
             Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
@@ -150,10 +150,10 @@ namespace Testing3
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             Boolean OK = true;
-            FilteredOrders.ReportByCustomerNo(1032);
+            FilteredOrders.ReportByCustomerNo(97);
             if (FilteredOrders.Count == 1) 
             { 
-                if (FilteredOrders.OrderList[0].CustomerID != 5)
+                if (FilteredOrders.OrderList[0].OrderNo != 6)
                 {
                     OK = false;
                 }
@@ -189,7 +189,7 @@ namespace Testing3
             FilteredOrders.ReportByOrderID(3);
             if (FilteredOrders.Count == 1)
             {
-                if (FilteredOrders.OrderList[0].CustomerID != 3)
+                if (FilteredOrders.OrderList[0].OrderNo != 3)
                 {
                     OK = false;
                 }
