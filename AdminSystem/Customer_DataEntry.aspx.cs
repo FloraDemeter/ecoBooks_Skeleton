@@ -47,18 +47,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string CustomerDateOfBirth = txtCustomerDateOfBirth.Text;
         string CustomerFullAddress = txtCustomerAddress.Text;
         string CustomerEmailAddress = txtCustomerEmailAddress.Text;
-
         String Error = "";
         Error = ACustomer.Valid(CustomerFullName, CustomerFullAddress, CustomerEmailAddress, CustomerDateOfBirth);
         if (Error == "")
-
             {
-                ACustomer.CustomerFullName = Convert.ToString(CustomerFullName);
-                ACustomer.CustomerDateOfBirth = Convert.ToDateTime(CustomerDateOfBirth);
-                ACustomer.CustomerAddress = CustomerFullAddress;
-                ACustomer.CustomerEmailAddress = CustomerEmailAddress;
-              }
-            Response.Redirect("Save_Customer_Details.aspx");
+            ACustomer.CustomerFullName = Convert.ToString(CustomerFullName);
+            ACustomer.CustomerDateOfBirth = Convert.ToDateTime(CustomerDateOfBirth);
+            ACustomer.CustomerAddress = CustomerFullAddress;
+            ACustomer.CustomerEmailAddress = CustomerEmailAddress;
+            Session["ACustomer"] = ACustomer;
+            Response.Write("Customer_Viewer.aspx");
+            }
+        else        
         {
             lblError.Text = Error;
         }
