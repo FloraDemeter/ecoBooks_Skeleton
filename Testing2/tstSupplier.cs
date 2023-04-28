@@ -136,8 +136,7 @@ namespace Testing2
         private object tstSupplierAddress;
         private object tstSupplierContactNo;
 
-        public string SupplierNo { get; private set; }
-        public string SupplyDate { get; private set; }
+        
 
         [TestMethod]
         public void TestSupplierAddressFound()
@@ -190,7 +189,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierName = "";
+            string SupplierName = "0";
             Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -208,7 +207,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierName = "0123456789012345678901234567890123456789";
+            string SupplierName = "0123456789012345678901234567890123456789012345678";
             Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -217,7 +216,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierName = "01234567890123456789012345678901234567890";
+            string SupplierName = "01234567890123456789012345678901234567890123456789";
             Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -226,7 +225,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierName = "0123456789012345678901234567890123456789";
+            string SupplierName = "012345678901234567890123456789012345678901234567890";
             Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -235,7 +234,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierName = "0123456789901234567891234567890123456789";
+            string SupplierName = "0123456789012345678901234";
             Error = AnSupplier.Valid(SupplierName, tstSupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -262,7 +261,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierAddress = "";
+            string SupplierAddress = "0";
             Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -280,7 +279,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierAddress = "01234567890123445667890123456778901234567890123456789";
+            string SupplierAddress = "0123456789012345678901234567890123456789012345678";
             Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -298,7 +297,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierAddress = "01234567890123456789012345678901234567890123456789";
+            string SupplierAddress = "012345678901234567890123456789012345678901234567890";
             Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -307,7 +306,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierAddress = "012345678901234567890123456789";
+            string SupplierAddress = "01234567890123456789012345";
             Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -319,6 +318,15 @@ namespace Testing2
             string SupplierAddress = "012345678901234567890123456789012345678901234567890012345678901234567890123456789012345678901234567890012345678901234567890123456789012345678901234567890";
             Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, SupplierAddress, tstSupplierContactNo);
             Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierContactNoExtremeMin()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            String Error = "";
+            string SupplierContactNo = "-1000";
+            Error = AnSupplier.Valid (tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void SupplierContactNoMinLessOne()
@@ -334,7 +342,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierContactNo = "";
+            string SupplierContactNo = "0";
             Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -388,7 +396,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplierContactNo = "077765566380777655663807776556638077765566380777655663807776556638077765566380777655663807776556638";
+            string SupplierContactNo = "012345678901234567890123456789";
             Error = AnSupplier.Valid(tstSupplierName, tstSupplyDate, tstSupplierAddress, SupplierContactNo);
             Assert.AreEqual(Error, "");
         }
@@ -435,7 +443,7 @@ namespace Testing2
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string SupplyDate = DateTime.Today.AddDays(1).ToString();
+            string SupplyDate = DateTime.Today.AddDays(100).ToString();
             Error = AnSupplier.Valid(tstSupplierName, SupplyDate, tstSupplierAddress, tstSupplierContactNo);
             Assert.AreNotEqual(Error, "");
 

@@ -11,7 +11,7 @@ public partial class _1Viewer : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         clsSupplier AnSupplier = new clsSupplier();
-        AnSupplier = (clsSupplier)Session["anSupplier"];
+        AnSupplier = (clsSupplier)Session["AnSupplier"];
         Response.Write(AnSupplier.SupplierNo);
 
     }
