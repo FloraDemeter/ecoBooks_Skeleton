@@ -13,7 +13,7 @@
             <div id="OrderDetails">
                 <br />
                 <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID" width="150px"></asp:Label>
-                <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtCustomerID" runat="server" OnTextChanged="txtCustomerID_TextChanged"></asp:TextBox>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <br />
                 <asp:Label ID="lblCustomerFullName" runat="server" Text="Full Name" width="150px"></asp:Label>
@@ -26,11 +26,12 @@
                 <br />
                 <br />
                 <asp:Label ID="lblCustomerAddress" runat="server" Text="Full Address" width="150px"></asp:Label>
-                <asp:TextBox ID="txtCustomerAddress" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtCustomerAddress" runat="server" OnTextChanged="txtCustomerAddress_TextChanged"></asp:TextBox>
                 <br />
                 <asp:Label ID="lblCustomerEmailAddress" runat="server" Text="Email Address" width="150px"></asp:Label>
                 <asp:TextBox ID="txtCustomerEmailAddress" runat="server"></asp:TextBox>
                 <br />
+                <asp:CheckBox ID="chkCustomerLoyalty" runat="server" style="z-index: 1; left: 337px; top: 73px; position: absolute" Text="Loyalty" />
                 <br />
             </div>
             <asp:Label ID="lblError" class="error" runat="server">Error</asp:Label>
